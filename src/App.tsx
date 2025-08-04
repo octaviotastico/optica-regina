@@ -63,11 +63,45 @@ const FeaturedProducts = () => {
   );
 };
 
+const AboutUs = () => (
+  <section id="nosotros" className="p-8 bg-white text-center">
+    <h2 className="text-3xl font-bold mb-4">¿Quiénes Somos?</h2>
+    <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+      En <strong>Óptica Regina Elena</strong>, llevamos más de 20 años cuidando la salud visual de nuestra comunidad.
+      Nos especializamos en anteojos de receta, lentes de sol, y tecnología de prueba virtual para que elijas tu próximo par sin moverte de casa.
+    </p>
+  </section>
+);
+
+const testimonials = [
+  { name: "Camila A.", comment: "Me asesoraron excelente y encontré los anteojos perfectos para mí." },
+  { name: "Julián D.", comment: "Tienen muchísima variedad y muy buena atención. ¡Volveré!" },
+  { name: "Florencia M.", comment: "Probé los modelos online y fue tal cual a cómo me quedaron. Muy conforme." },
+];
+
+const Testimonials = () => (
+  <section className="p-8 bg-gray-100 text-center">
+    <h2 className="text-3xl font-bold mb-6">Lo Que Dicen Nuestros Clientes</h2>
+    <div className="grid md:grid-cols-3 gap-6">
+      {testimonials.map(({ name, comment }) => (
+        <Card key={name}>
+          <CardContent className="p-6">
+            <p className="text-gray-700 italic mb-4">"{comment}"</p>
+            <p className="font-semibold text-sm text-gray-800">— {name}</p>
+          </CardContent>
+        </Card>
+      ))}
+    </div>
+  </section>
+);
+
 export default function Home() {
   return (
     <main className="bg-white min-h-screen">
       <HeroSection />
       <FeaturedProducts />
+      <AboutUs />
+      <Testimonials />
     </main>
   );
 }
