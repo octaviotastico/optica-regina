@@ -15,6 +15,9 @@ import {
   Clock,
   Eye, MapPin, Users
 } from "lucide-react";
+import { Canvas } from "@react-three/fiber";
+import { OrbitControls, Environment, useGLTF } from "@react-three/drei";
+import { Suspense } from "react";
 
 const HeroSection = () => (
   <section className="grid md:grid-cols-2 gap-6 p-8 items-center">
@@ -289,8 +292,41 @@ export const Testimonials = () => {
 };
 
 
+
+function GlassesModel() {
+  const { scene } = useGLTF("/models/glasses-custom.glb");
+  return <primitive object={scene} scale={1} />;
+}
+
+export const GlassesViewer = () => (
+  <div className="w-full h-[500px] bg-gray-100 rounded-2xl shadow-inner cursor-grab">
+    <Canvas camera={{ position: [-7, 3, 12], fov: 60 }}>
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} />
+      <Suspense fallback={null}>
+        <GlassesModel />
+        <Environment preset="city" />
+      </Suspense>
+      <OrbitControls enableZoom={true} />
+    </Canvas>
+  </div>
+);
+
+const TryIn3D = () => (
+  <section className="p-8 bg-white text-center">
+    <h2 className="text-3xl font-bold mb-4">Explorá el Modelo en 3D</h2>
+    <p className="text-gray-600 mb-6">
+      Girá, acercá y descubrí cada detalle de nuestras gafas con esta experiencia interactiva.
+    </p>
+    <div className="max-w-4xl mx-auto">
+      <GlassesViewer />
+    </div>
+  </section>
+);
+
+
 const VisitUs = () => (
-  <section id="donde-estamos" className="p-8 bg-white text-center">
+  <section id="donde-estamos" className="p-8 text-center bg-gray-100">
     <h2 className="text-3xl font-bold mb-4">¿Dónde Estamos?</h2>
     <p className="text-lg text-gray-600 mb-2 flex justify-center items-center gap-2">
       <MapPin className="inline-block" />
@@ -318,6 +354,7 @@ export default function Home() {
       <FeaturedProducts />
       <AboutUs />
       <Testimonials />
+      <TryIn3D />
       <VisitUs />
     </main>
   );
