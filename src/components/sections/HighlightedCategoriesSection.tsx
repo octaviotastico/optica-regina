@@ -20,7 +20,7 @@ const HighlightedCategoriesSection = () => {
   ];
 
   return (
-    <section className="p-8 bg-gray-100 min-h-[646px]">
+    <section className="p-8 bg-gray-100 min-h-[606px]">
       <h2 className="text-3xl font-bold mb-6 text-center">
         Categorias Destacadas
       </h2>
