@@ -52,8 +52,8 @@ const AboutUsSection = () => (
             "Cobertura con múltiples obras sociales.",
             "Entrega rápida y seguimiento postventa.",
           ].map((item, index) => (
-            <li key={index} className="flex items-start gap-2">
-              <ChevronRight className="text-brand mt-1" />
+            <li key={index} className="flex items-center gap-4">
+              <ChevronRight className="text-brand" />
               <span>{item}</span>
             </li>
           ))}

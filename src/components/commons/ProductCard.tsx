@@ -11,7 +11,7 @@ const ProductCard = ({
   desc: string;
   img: string;
 }) => (
-  <Card className="hover:scale-105 transition-transform cursor-pointer group h-fit">
+  <Card className="hover:scale-105 transition-transform cursor-pointer group h-fit pt-0 pb-2">
     <CardContent className="flex flex-col p-3 items-center gap-2">
       <img
         src={img}
