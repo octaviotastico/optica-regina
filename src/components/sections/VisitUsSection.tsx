@@ -139,7 +139,7 @@ const VisitUsSection = () => {
                   href="https://www.instagram.com/opticareginaelena"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 hover:underline text-[#E1306C]"
+                  className="flex flex-col items-center gap-2 hover:underline text-brand"
                 >
                   <Instagram className="w-20 h-20" /> Instagram
                 </a>
@@ -147,7 +147,7 @@ const VisitUsSection = () => {
                   href="https://www.facebook.com/OpticaReginaElena/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 hover:underline text-[#1877F2]"
+                  className="flex flex-col items-center gap-2 hover:underline text-brand"
                 >
                   <Facebook className="w-20 h-20" /> Facebook
                 </a>
@@ -155,7 +155,7 @@ const VisitUsSection = () => {
                   href="https://api.whatsapp.com/send?phone=5493513570864&text=Tenemos%20esos%20lentes%20que%20busc%C3%A1s!%20%F0%9F%98%8E%20%C2%BFen%20qu%C3%A9%20podemos%20ayudarte%3F"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex flex-col items-center gap-2 hover:underline text-[#25D366]"
+                  className="flex flex-col items-center gap-2 hover:underline text-brand"
                 >
                   <MessageCircle className="w-20 h-20" /> WhatsApp
                 </a>
