@@ -47,7 +47,7 @@ export const TestimonialsSection = () => {
   return (
     <section
       className="p-8 px-4 md:px-20 bg-gray-100 text-center"
-      id="testimonios"
+      id="testimonials"
     >
       <h2 className="text-3xl font-bold mb-6">
         Lo Que Dicen Nuestros Clientes

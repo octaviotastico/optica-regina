@@ -10,7 +10,7 @@ import {
 
 const AboutUsSection = () => (
   <section
-    id="nosotros"
+    id="about-us"
     className="p-8 bg-white text-center border-t border-gray-100"
   >
     <motion.h2

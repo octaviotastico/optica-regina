@@ -2,7 +2,10 @@ import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
 
 const IntroductionSection = () => (
-  <section className="grid md:grid-cols-2 gap-6 p-8 items-center">
+  <section
+    className="grid md:grid-cols-2 gap-6 p-8 items-center"
+    id="introduction"
+  >
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}

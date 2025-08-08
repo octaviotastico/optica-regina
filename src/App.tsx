@@ -1,3 +1,4 @@
+import Header from "./components/commons/Header";
 import AboutUsSection from "./components/sections/AboutUsSection";
 import HighlightedCategoriesSection from "./components/sections/HighlightedCategoriesSection";
 import IntroductionSection from "./components/sections/Introduction";
@@ -7,13 +8,16 @@ import VisitUsSection from "./components/sections/VisitUsSection";
 
 export default function Home() {
   return (
-    <main className="bg-white min-h-screen">
-      <IntroductionSection />
-      <HighlightedCategoriesSection />
-      <AboutUsSection />
-      <TestimonialsSection />
-      <TryIn3DSection />
-      <VisitUsSection />
-    </main>
+    <>
+      <Header />
+      <main className="bg-white min-h-screen pt-24" id="inicio">
+        <IntroductionSection />
+        <HighlightedCategoriesSection />
+        <AboutUsSection />
+        <TestimonialsSection />
+        <TryIn3DSection />
+        <VisitUsSection />
+      </main>
+    </>
   );
 }

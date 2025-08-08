@@ -1,15 +1,14 @@
 module.exports = {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+  content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   purge: [],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      scrollBehavior: ["responsive"],
+    },
   },
   variants: {
     extend: {},
   },
   plugins: [],
-}
+};

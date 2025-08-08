@@ -112,7 +112,7 @@ export function OpeningHours() {
 
 const VisitUsSection = () => {
   return (
-    <section id="donde-estamos" className="p-8 text-center bg-gray-100">
+    <section id="visit-us" className="p-8 text-center bg-gray-100">
       <h2 className="text-3xl font-bold mb-6">¿Dónde Estamos?</h2>
 
       <div className="flex flex-col md:flex-row gap-8">
