@@ -171,12 +171,17 @@ const VisitUsSection = () => {
 
         {/* Right Column - Map */}
         <div className="flex flex-col flex-4">
-          <p className="text-lg text-black font-semibold mb-2 flex items-center gap-2">
+          <a
+            className="text-lg text-black font-semibold mb-2 flex items-center gap-2 hover:underline"
+            href="https://maps.app.goo.gl/77pvfKjY66RAJ91H9"
+            rel="noopener noreferrer"
+            target="_blank"
+          >
             <MapPin className="inline-block text-brand w-6 h-6" />
             Roma 535, X5004 BAK, Córdoba, Argentina
-          </p>
+          </a>
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1375.8377894103648!2d-64.1902138!3d-31.4129989!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a28f9a3771fd%3A0xf50d387e9ad3c4ae!2sRoma%20535%2C%20X5004BAK%20C%C3%B3rdoba!5e0!3m2!1ses!2sar!4v1691091819526!5m2!1ses!2sar"
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6810.327995415303!2d-64.16753622360633!3d-31.409607374264862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a2a751027d5b%3A0xf535447dbfd24691!2s%C3%93ptica%20Regina%20Elena!5e0!3m2!1ses-419!2sit!4v1754662721116!5m2!1ses-419!2sit"
             width="100%"
             height="100%"
             style={{ border: 0 }}
