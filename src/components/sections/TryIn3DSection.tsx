@@ -33,12 +33,12 @@ const TryIn3DSection = () => (
       Girá, acercá y descubrí cada detalle de nuestras gafas con esta
       experiencia interactiva.
     </p>
-    <div className="mx-auto flex flex-col lg:flex-row gap-8 items-start text-left">
-      <div className="flex-3">
+    <div className="mx-auto flex flex-col lg:flex-row gap-8 items-stretch text-left">
+      <div className="flex-3 min-h-[500px] lg:min-h-0">
         <GlassesViewer />
       </div>
       <Card className="flex-2 p-0 bg-gradient-to-br from-[#FFFFFF] to-gray-50">
-        <CardContent className="p-6 space-y-4">
+        <CardContent className="p-6 space-y-4 h-full flex flex-col">
           <div className="flex items-center gap-2">
             <Badge variant="outline">Nuevo</Badge>
             <h3 className="text-2xl font-semibold">Ray-Ban RB7046</h3>
@@ -50,7 +50,7 @@ const TryIn3DSection = () => (
             Estilo moderno con el sello de calidad de Ray-Ban. Un diseño
             versátil para quienes buscan comodidad sin perder elegancia.
           </p>
-          <ul className="space-y-3">
+          <ul className="space-y-3 flex-grow">
             {[
               "Material del marco: Acetato transparente",
               "Varillas: Carey oscuro",
