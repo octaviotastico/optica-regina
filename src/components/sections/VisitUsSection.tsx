@@ -69,14 +69,14 @@ export function OpeningHours() {
   }
 
   return (
-    <div className="bg-white rounded-xl shadow p-4">
+    <div className="bg-gradient-to-br from-[#FFFFFF] to-gray-50 rounded-xl shadow p-4">
       <p className="text-gray-700 font-medium">
         Hoy ({today.charAt(0).toUpperCase() + today.slice(1)}):{" "}
         <span className="font-semibold text-green-700">{todayHours}</span>
       </p>
       {isOpenNow && (
         <div className="flex items-center gap-2 mt-2 text-green-700 font-semibold">
-          <CheckCircle className="w-5 h-5" />
+          <CheckCircle className="w-6 h-6" />
           ¡Estamos abiertos ahora! Vení a visitarnos 😊
         </div>
       )}
@@ -117,62 +117,62 @@ const VisitUsSection = () => {
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left Column */}
-        <div className="flex-1 text-left space-y-6">
+        <div className="flex-2 text-left space-y-6">
           <div>
             <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
-              <Phone className="w-5 h-5 text-green-600" />
+              <Phone className="w-6 h-6 text-brand" />
               Contactanos
             </h3>
 
-            <div className="bg-white rounded-xl shadow p-4">
-              <p className="text-gray-700">
-                Teléfono:{" "}
-                <a
-                  href="tel:+543513570864"
-                  className="text-blue-600 hover:underline"
-                >
-                  +54 351 357-0864
-                </a>
-              </p>
-              <div className="flex flex-col gap-1 mt-2">
+            <div className="rounded-xl shadow p-4 bg-gradient-to-br from-[#FFFFFF] to-gray-50">
+              <p className="text-gray-700 font-semibold">Teléfono: </p>
+              <a
+                href="tel:+543513570864"
+                className="text-brand hover:underline"
+              >
+                +54 351 357-0864
+              </a>
+
+              <p className="text-gray-700 font-semibold mt-4">Seguinos en:</p>
+              <div className="flex gap-10 mt-2">
                 <a
                   href="https://www.instagram.com/opticareginaelena"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 !text-pink-600 hover:underline"
+                  className="flex flex-col items-center gap-2 hover:underline text-[#E1306C]"
                 >
-                  <Instagram className="w-4 h-4" /> Instagram
+                  <Instagram className="w-20 h-20" /> Instagram
                 </a>
                 <a
                   href="https://www.facebook.com/OpticaReginaElena/"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 !text-blue-700 hover:underline"
+                  className="flex flex-col items-center gap-2 hover:underline text-[#1877F2]"
                 >
-                  <Facebook className="w-4 h-4" /> Facebook
+                  <Facebook className="w-20 h-20" /> Facebook
                 </a>
                 <a
                   href="https://api.whatsapp.com/send?phone=5493513570864&text=Tenemos%20esos%20lentes%20que%20busc%C3%A1s!%20%F0%9F%98%8E%20%C2%BFen%20qu%C3%A9%20podemos%20ayudarte%3F"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-2 !text-green-600 hover:underline"
+                  className="flex flex-col items-center gap-2 hover:underline text-[#25D366]"
                 >
-                  <MessageCircle className="w-4 h-4" /> WhatsApp
+                  <MessageCircle className="w-20 h-20" /> WhatsApp
                 </a>
               </div>
             </div>
           </div>
 
           <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
-            <Clock className="w-5 h-5 text-yellow-600" /> Horarios de Atención
+            <Clock className="w-6 h-6 text-brand" /> Horarios de Atención
           </h3>
           <OpeningHours />
         </div>
 
         {/* Right Column - Map */}
-        <div className="flex flex-col flex-1">
-          <p className="text-lg text-gray-600 mb-2 flex items-center gap-2">
-            <MapPin className="inline-block text-red-500" />
+        <div className="flex flex-col flex-4">
+          <p className="text-lg text-black font-semibold mb-2 flex items-center gap-2">
+            <MapPin className="inline-block text-brand w-6 h-6" />
             Roma 535, X5004 BAK, Córdoba, Argentina
           </p>
           <iframe

@@ -13,7 +13,7 @@ export function GlassesModel() {
 }
 
 export const GlassesViewer = () => (
-  <div className="w-full h-full bg-gray-100 rounded-2xl shadow-inner cursor-grab">
+  <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-2xl shadow-inner cursor-grab">
     <Canvas camera={{ position: [-7, 3, 12], fov: 60 }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} />
@@ -37,7 +37,7 @@ const TryIn3DSection = () => (
       <div className="flex-3">
         <GlassesViewer />
       </div>
-      <Card className="flex-2 p-0">
+      <Card className="flex-2 p-0 bg-gradient-to-br from-[#FFFFFF] to-gray-50">
         <CardContent className="p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Badge variant="outline">Nuevo</Badge>
