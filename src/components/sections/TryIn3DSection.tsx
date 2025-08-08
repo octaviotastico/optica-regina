@@ -13,7 +13,7 @@ export function GlassesModel() {
 }
 
 export const GlassesViewer = () => (
-  <div className="w-full h-[500px] bg-gray-100 rounded-2xl shadow-inner cursor-grab">
+  <div className="w-full h-full bg-gray-100 rounded-2xl shadow-inner cursor-grab">
     <Canvas camera={{ position: [-7, 3, 12], fov: 60 }}>
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} />
@@ -27,17 +27,17 @@ export const GlassesViewer = () => (
 );
 
 const TryIn3DSection = () => (
-  <section className="p-8 bg-white text-center">
+  <section className="p-8 md:px-40 bg-white text-center">
     <h2 className="text-3xl font-bold mb-4">Explorá el Modelo en 3D</h2>
     <p className="text-gray-600 mb-6">
       Girá, acercá y descubrí cada detalle de nuestras gafas con esta
       experiencia interactiva.
     </p>
-    <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-start text-left">
-      <div className="flex-1">
+    <div className="mx-auto flex flex-col lg:flex-row gap-8 items-start text-left">
+      <div className="flex-3">
         <GlassesViewer />
       </div>
-      <Card className="flex-1 p-0 h-full">
+      <Card className="flex-2 p-0">
         <CardContent className="p-6 space-y-4">
           <div className="flex items-center gap-2">
             <Badge variant="outline">Nuevo</Badge>
