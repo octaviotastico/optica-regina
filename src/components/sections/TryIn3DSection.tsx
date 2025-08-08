@@ -1,10 +1,15 @@
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
+import { ChevronRight, BadgeCheck } from "lucide-react";
 import { Suspense } from "react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Separator } from "../ui/separator";
 
 export function GlassesModel() {
   const { scene } = useGLTF("/models/glasses-custom.glb");
-  return <primitive object={scene} scale={1} />;
+  return <primitive object={scene} scale={1.3} />;
 }
 
 export const GlassesViewer = () => (
@@ -28,8 +33,51 @@ const TryIn3DSection = () => (
       Girá, acercá y descubrí cada detalle de nuestras gafas con esta
       experiencia interactiva.
     </p>
-    <div className="max-w-4xl mx-auto">
-      <GlassesViewer />
+    <div className="max-w-6xl mx-auto flex flex-col lg:flex-row gap-8 items-start text-left">
+      <div className="flex-1">
+        <GlassesViewer />
+      </div>
+      <Card className="flex-1 p-0 h-full">
+        <CardContent className="p-6 space-y-4">
+          <div className="flex items-center gap-2">
+            <Badge variant="outline">Nuevo</Badge>
+            <h3 className="text-2xl font-semibold">Ray-Ban RB7046</h3>
+          </div>
+
+          <Separator />
+
+          <p className="text-muted-foreground">
+            Estilo moderno con el sello de calidad de Ray-Ban. Un diseño
+            versátil para quienes buscan comodidad sin perder elegancia.
+          </p>
+          <ul className="space-y-3">
+            {[
+              "Material del marco: Acetato transparente",
+              "Varillas: Carey oscuro",
+              "Forma: Rectangular ligeramente redondeada",
+              "Ajuste cómodo con puente moldeado",
+              "Ideal para lentes recetados o con filtro de luz azul",
+            ].map((item) => (
+              <li key={item} className="flex items-start gap-3 text-gray-700">
+                <ChevronRight className="text-brand mt-1" />
+                <span>{item}</span>
+              </li>
+            ))}
+          </ul>
+          <div className="flex items-center gap-3 pt-2">
+            <BadgeCheck className="text-green-600" />
+            <span className="text-sm text-gray-500">
+              Garantía oficial de fábrica incluida
+            </span>
+          </div>
+
+          <Separator className="mt-6" />
+
+          <Button className="mt-2 w-full cursor-pointer bg-brand hover:!bg-[#dd3a45]">
+            Ver más detalles
+          </Button>
+        </CardContent>
+      </Card>
     </div>
   </section>
 );

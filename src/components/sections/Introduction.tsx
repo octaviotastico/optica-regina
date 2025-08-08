@@ -14,7 +14,7 @@ const IntroductionSection = () => (
       <p className="text-lg text-gray-600 mb-6">
         Probá nuestros modelos en línea con tecnología de prueba virtual 3D.
       </p>
-      <Button className="text-lg px-6 py-3 rounded-2xl shadow">
+      <Button className="text-lg px-6 py-3 shadow cursor-pointer bg-brand hover:!bg-[#dd3a45]">
         Probar Ahora
       </Button>
     </motion.div>
