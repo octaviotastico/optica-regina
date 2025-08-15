@@ -1,4 +1,5 @@
 import ProductCard from "../commons/ProductCard";
+import { motion } from "framer-motion";
 
 const HighlightedCategoriesSection = () => {
   const products = [
@@ -20,19 +21,46 @@ const HighlightedCategoriesSection = () => {
   ];
 
   return (
-    <section className="p-8 bg-gray-100 min-h-[606px]" id="categories">
-      <h2 className="text-3xl font-bold mb-6 text-center">
+    <motion.section
+      className="p-8 bg-gray-100 min-h-[606px]"
+      id="categories"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold mb-6 text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         Categorias Destacadas
-      </h2>
-      <p className="text-center">
+      </motion.h2>
+      <motion.p
+        className="text-center"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
         Elige una categoría para explorar nuestros productos destacados.
-      </p>
+      </motion.p>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-        {products.map((p) => (
-          <ProductCard key={p.name} {...p} />
+        {products.map((p, index) => (
+          <motion.div
+            key={p.name}
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.1, duration: 0.4 }}
+          >
+            <ProductCard {...p} />
+          </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 };
 

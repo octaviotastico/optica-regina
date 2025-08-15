@@ -6,6 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Separator } from "../ui/separator";
+import { motion } from "framer-motion";
 
 export function GlassesModel() {
   const { scene } = useGLTF("/models/glasses-custom.glb");
@@ -27,59 +28,94 @@ export const GlassesViewer = () => (
 );
 
 const TryIn3DSection = () => (
-  <section className="p-8 md:px-40 bg-white text-center" id="try-in-3d">
-    <h2 className="text-3xl font-bold mb-4">Explorá el Modelo en 3D</h2>
-    <p className="text-gray-600 mb-6">
+  <motion.section
+    className="p-8 md:px-40 bg-white text-center"
+    id="try-in-3d"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.5 }}
+  >
+    <motion.h2
+      className="text-3xl font-bold mb-4"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5 }}
+    >
+      Explorá el Modelo en 3D
+    </motion.h2>
+    <motion.p
+      className="text-gray-600 mb-6"
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ duration: 0.5, delay: 0.1 }}
+    >
       Girá, acercá y descubrí cada detalle de nuestras gafas con esta
       experiencia interactiva.
-    </p>
+    </motion.p>
     <div className="mx-auto flex flex-col lg:flex-row gap-8 items-stretch text-left">
-      <div className="flex-3 min-h-[500px] lg:min-h-0">
+      <motion.div
+        className="flex-3 min-h-[500px] lg:min-h-0"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         <GlassesViewer />
-      </div>
-      <Card className="flex-2 p-0 bg-gradient-to-br from-[#FFFFFF] to-gray-50">
-        <CardContent className="p-6 space-y-4 h-full flex flex-col">
-          <div className="flex items-center gap-2">
-            <Badge variant="outline">Nuevo</Badge>
-            <h3 className="text-2xl font-semibold">Ray-Ban RB7046</h3>
-          </div>
+      </motion.div>
+      <motion.div
+        className="flex-2 p-0"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.1 }}
+      >
+        <Card className="h-full bg-gradient-to-br from-[#FFFFFF] to-gray-50">
+          <CardContent className="p-6 space-y-4 h-full flex flex-col">
+            <div className="flex items-center gap-2">
+              <Badge variant="outline">Nuevo</Badge>
+              <h3 className="text-2xl font-semibold">Ray-Ban RB7046</h3>
+            </div>
 
-          <Separator />
+            <Separator />
 
-          <p className="text-muted-foreground">
-            Estilo moderno con el sello de calidad de Ray-Ban. Un diseño
-            versátil para quienes buscan comodidad sin perder elegancia.
-          </p>
-          <ul className="space-y-3 flex-grow">
-            {[
-              "Material del marco: Acetato transparente",
-              "Varillas: Carey oscuro",
-              "Forma: Rectangular ligeramente redondeada",
-              "Ajuste cómodo con puente moldeado",
-              "Ideal para lentes recetados o con filtro de luz azul",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-gray-700">
-                <ChevronRight className="text-brand mt-1" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-3 pt-2">
-            <BadgeCheck className="text-green-600" />
-            <span className="text-sm text-gray-500">
-              Garantía oficial de fábrica incluida
-            </span>
-          </div>
+            <p className="text-muted-foreground">
+              Estilo moderno con el sello de calidad de Ray-Ban. Un diseño
+              versátil para quienes buscan comodidad sin perder elegancia.
+            </p>
+            <ul className="space-y-3 flex-grow">
+              {[
+                "Material del marco: Acetato transparente",
+                "Varillas: Carey oscuro",
+                "Forma: Rectangular ligeramente redondeada",
+                "Ajuste cómodo con puente moldeado",
+                "Ideal para lentes recetados o con filtro de luz azul",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3 text-gray-700">
+                  <ChevronRight className="text-brand mt-1" />
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+            <div className="flex items-center gap-3 pt-2">
+              <BadgeCheck className="text-green-600" />
+              <span className="text-sm text-gray-500">
+                Garantía oficial de fábrica incluida
+              </span>
+            </div>
 
-          <Separator className="mt-6" />
+            <Separator className="mt-6" />
 
-          <Button className="mt-2 w-full cursor-pointer bg-brand hover:!bg-[#dd3a45]">
-            Ver más detalles
-          </Button>
-        </CardContent>
-      </Card>
+            <Button className="mt-2 w-full cursor-pointer bg-brand hover:!bg-[#dd3a45]">
+              Ver más detalles
+            </Button>
+          </CardContent>
+        </Card>
+      </motion.div>
     </div>
-  </section>
+  </motion.section>
 );
 
 export default TryIn3DSection;
