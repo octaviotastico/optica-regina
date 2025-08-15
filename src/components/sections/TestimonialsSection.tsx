@@ -6,6 +6,7 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { motion } from "framer-motion";
 
 const testimonials = [
   {
@@ -45,13 +46,23 @@ const testimonials = [
 
 export const TestimonialsSection = () => {
   return (
-    <section
+    <motion.section
       className="p-8 px-4 md:px-20 bg-gray-100 text-center"
       id="testimonials"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
     >
-      <h2 className="text-3xl font-bold mb-6">
+      <motion.h2
+        className="text-3xl font-bold mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
         Lo Que Dicen Nuestros Clientes
-      </h2>
+      </motion.h2>
       <Carousel
         className="w-3/4 mx-auto cursor-grab select-none"
         opts={{ loop: true }}
@@ -62,7 +73,13 @@ export const TestimonialsSection = () => {
               key={index}
               className="pl-1 md:basis-1/2 lg:basis-1/3"
             >
-              <div className="p-2 h-full">
+              <motion.div
+                className="p-2 h-full"
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+              >
                 <Card className="h-full">
                   <CardContent className="p-6 flex items-center gap-4 text-left">
                     <img
@@ -78,14 +95,14 @@ export const TestimonialsSection = () => {
                     </div>
                   </CardContent>
                 </Card>
-              </div>
+              </motion.div>
             </CarouselItem>
           ))}
         </CarouselContent>
         <CarouselPrevious className="!bg-white shadow !border-gray-300" />
         <CarouselNext className="!bg-white shadow !border-gray-300" />
       </Carousel>
-    </section>
+    </motion.section>
   );
 };
 

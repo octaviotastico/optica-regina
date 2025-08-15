@@ -14,6 +14,7 @@ import {
   Phone,
 } from "lucide-react";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const openingHours = {
   lunes: "8:30 a.m. – 6:30 p.m.",
@@ -112,12 +113,33 @@ export function OpeningHours() {
 
 const VisitUsSection = () => {
   return (
-    <section id="visit-us" className="p-8 text-center bg-gray-100">
-      <h2 className="text-3xl font-bold mb-6">¿Dónde Estamos?</h2>
+    <motion.section
+      id="visit-us"
+      className="p-8 text-center bg-gray-100"
+      initial={{ opacity: 0, y: 40 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+    >
+      <motion.h2
+        className="text-3xl font-bold mb-6"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+      >
+        ¿Dónde Estamos?
+      </motion.h2>
 
       <div className="flex flex-col md:flex-row gap-8">
         {/* Left Column */}
-        <div className="flex-2 text-left space-y-6">
+        <motion.div
+          className="flex-2 text-left space-y-6"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+        >
           <div>
             <h3 className="text-xl font-semibold mb-2 flex items-center gap-2">
               <Phone className="w-6 h-6 text-brand" />
@@ -167,10 +189,16 @@ const VisitUsSection = () => {
             <Clock className="w-6 h-6 text-brand" /> Horarios de Atención
           </h3>
           <OpeningHours />
-        </div>
+        </motion.div>
 
         {/* Right Column - Map */}
-        <div className="flex flex-col flex-4">
+        <motion.div
+          className="flex flex-col flex-4"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.1 }}
+        >
           <a
             className="text-lg text-black font-semibold mb-2 flex items-center gap-2 hover:underline"
             href="https://maps.app.goo.gl/77pvfKjY66RAJ91H9"
@@ -190,9 +218,9 @@ const VisitUsSection = () => {
             referrerPolicy="no-referrer-when-downgrade"
             className="rounded-2xl overflow-hidden shadow-lg"
           />
-        </div>
+        </motion.div>
       </div>
-    </section>
+    </motion.section>
   );
 };
 
