@@ -1,4 +1,6 @@
 import ProductCard from "../commons/ProductCard";
+import { motion } from "framer-motion";
+import { fadeInUp } from "@/lib/animations";
 
 const HighlightedCategoriesSection = () => {
   const products = [
@@ -21,15 +23,28 @@ const HighlightedCategoriesSection = () => {
 
   return (
     <section className="p-8 bg-gray-100 min-h-[606px]" id="categories">
-      <h2 className="text-3xl font-bold mb-6 text-center">
+      <motion.h2
+        className="text-3xl font-bold mb-6 text-center"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         Categorias Destacadas
-      </h2>
-      <p className="text-center">
+      </motion.h2>
+      <motion.p
+        className="text-center"
+        variants={fadeInUp}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ delay: 0.1 }}
+      >
         Elige una categoría para explorar nuestros productos destacados.
-      </p>
+      </motion.p>
       <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
-        {products.map((p) => (
-          <ProductCard key={p.name} {...p} />
+        {products.map((p, i) => (
+          <ProductCard key={p.name} index={i} {...p} />
         ))}
       </div>
     </section>
