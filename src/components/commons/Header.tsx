@@ -103,6 +103,13 @@ export const Header = () => {
             Nosotros
           </a>
           <a
+            href="#services"
+            onClick={(e) => handleNavClick(e, "services")}
+            className="hover:text-brand transition-colors cursor-pointer"
+          >
+            Servicios
+          </a>
+          <a
             href="#testimonials"
             onClick={(e) => handleNavClick(e, "testimonials")}
             className="hover:text-brand transition-colors cursor-pointer"
@@ -122,6 +129,13 @@ export const Header = () => {
             className="hover:text-brand transition-colors cursor-pointer"
           >
             Dónde Estamos
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => handleNavClick(e, "contact")}
+            className="hover:text-brand transition-colors cursor-pointer"
+          >
+            Contacto
           </a>
         </nav>
       </motion.header>
