@@ -5,6 +5,7 @@ import IntroductionSection from "./components/sections/Introduction";
 import TestimonialsSection from "./components/sections/TestimonialsSection";
 import TryIn3DSection from "./components/sections/TryIn3DSection";
 import VisitUsSection from "./components/sections/VisitUsSection";
+import WhyChooseUs from "./components/sections/WhyChooseUs";
 
 export default function Home() {
   return (
@@ -15,6 +16,7 @@ export default function Home() {
         <HighlightedCategoriesSection />
         <AboutUsSection />
         <TestimonialsSection />
+        <WhyChooseUs />
         <TryIn3DSection />
         <VisitUsSection />
       </main>
