@@ -51,7 +51,7 @@ const WhyChooseUs = () => (
       {features.map(({ icon: Icon, title, description }, index) => (
         <motion.div
           key={title}
-          className="p-6 rounded-2xl bg-white/40 backdrop-blur-md border border-white/20 shadow-lg"
+          className="p-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/20 shadow-lg flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 hover:scale-[103%]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}

@@ -28,7 +28,7 @@ export const GlassesViewer = () => (
 
 const TryIn3DSection = () => (
   <section className="p-8 md:px-40 bg-white text-center" id="try-in-3d">
-    <h2 className="text-3xl font-bold mb-4">Explorá el Modelo en 3D</h2>
+    <h2 className="text-3xl font-bold mb-4">Explorá nuestro catálogo en 3D</h2>
     <p className="text-gray-600 mb-6">
       Girá, acercá y descubrí cada detalle de nuestras gafas con esta
       experiencia interactiva.

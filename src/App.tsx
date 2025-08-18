@@ -1,5 +1,6 @@
 import Header from "./components/commons/Header";
 import AboutUsSection from "./components/sections/AboutUsSection";
+import FooterSection from "./components/sections/FooterSection";
 import HighlightedCategoriesSection from "./components/sections/HighlightedCategoriesSection";
 import IntroductionSection from "./components/sections/Introduction";
 import TestimonialsSection from "./components/sections/TestimonialsSection";
@@ -20,6 +21,7 @@ export default function Home() {
         <TryIn3DSection />
         <VisitUsSection />
       </main>
+      <FooterSection />
     </>
   );
 }
