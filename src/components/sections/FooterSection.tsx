@@ -1,4 +1,6 @@
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -53,6 +55,8 @@ const LinkItem = ({ href, children }: { href: string; children: React.ReactNode 
 );
 
 export default function FooterSection() {
+  const [openReturns, setOpenReturns] = useState(false);
+
   return (
     <footer className="relative border-t border-gray-100">
       {/* Top CTA strip */}
@@ -187,7 +191,7 @@ export default function FooterSection() {
           </motion.div>
         </div>
 
-        {/* Newsletter (optional; no external libs needed) */}
+        {/* Newsletter */}
         <motion.div
           variants={item}
           className="mt-10 rounded-2xl border border-gray-200 p-5 sm:p-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
@@ -212,7 +216,6 @@ export default function FooterSection() {
                 return;
               }
               input.setCustomValidity("");
-              // Handle submit: replace with your logic (API call, etc.)
               alert("¡Gracias por suscribirte!");
               form.reset();
             }}
@@ -241,23 +244,61 @@ export default function FooterSection() {
           </p>
           <ul className="flex flex-wrap items-center gap-4">
             <li>
-              <a href="#privacidad" className="hover:text-gray-800">
-                Política de Privacidad
-              </a>
-            </li>
-            <li>
-              <a href="#terminos" className="hover:text-gray-800">
-                Términos y Condiciones
-              </a>
-            </li>
-            <li>
-              <a href="#devoluciones" className="hover:text-gray-800">
+              <a
+                href="#devoluciones"
+                onClick={(e) => { e.preventDefault(); setOpenReturns(true); }}
+                className="hover:text-gray-800 cursor-pointer"
+              >
                 Cambios y Devoluciones
               </a>
             </li>
           </ul>
         </div>
       </div>
+
+      {/* Modal Cambios y Devoluciones */}
+      <Dialog open={openReturns} onOpenChange={setOpenReturns}>
+        <DialogContent className="sm:max-w-lg">
+          <DialogHeader>
+            <DialogTitle>Política de Cambios y Devoluciones</DialogTitle>
+            <DialogDescription>Texto genérico — reemplazalo por tus condiciones reales.</DialogDescription>
+          </DialogHeader>
+
+          <div className="prose prose-sm max-w-none text-gray-700 space-y-3">
+            <p>
+              Aceptamos cambios dentro de los <strong>30 días</strong> corridos desde la fecha de compra.
+              Los productos deben estar en perfecto estado, con su estuche y accesorios originales,
+              y presentar comprobante de compra.
+            </p>
+            <ul className="list-disc pl-5">
+              <li>Cambios por talle/modelo sujetos a disponibilidad.</li>
+              <li>No se aceptan productos rayados, dañados o con signos de uso.</li>
+              <li>Productos en promo: se respeta el precio abonado al momento de la compra.</li>
+              <li>Devoluciones: reintegro según medio de pago, dentro de 5 a 10 días hábiles.</li>
+            </ul>
+            <p>
+              Para iniciar un cambio o devolución, escribinos a{" "}
+              <a href="mailto:hola@opticareginaelena.com" className="text-brand underline">
+                hola@opticareginaelena.com
+              </a>{" "}
+              o por WhatsApp al{" "}
+              <a href="https://api.whatsapp.com/send?phone=5493513570864" target="_blank" rel="noreferrer" className="text-brand underline">
+                +54 9 351 357-0864
+              </a>.
+            </p>
+            <p className="text-xs text-gray-500">
+              Vigente a partir del 01/01/2025. Sujeto a modificaciones sin previo aviso.
+            </p>
+          </div>
+
+          <DialogFooter className="mt-4">
+            <Button variant="outline" onClick={() => setOpenReturns(false)}>Cerrar</Button>
+            <Button className="bg-brand hover:!bg-[#dd3a45]" onClick={() => setOpenReturns(false)}>
+              Aceptar
+            </Button>
+          </DialogFooter>
+        </DialogContent>
+      </Dialog>
     </footer>
   );
 }
