@@ -19,8 +19,8 @@ export default function Home() {
         <AboutUsSection />
         <TestimonialsSection />
         <WhyChooseUs />
-        <FollowUsSection />
         <TryIn3DSection />
+        <FollowUsSection />
         <VisitUsSection />
       </main>
       <FooterSection />
