@@ -1,6 +1,6 @@
 import Header from "./components/commons/Header";
 import AboutUsSection from "./components/sections/AboutUsSection";
-// import FollowUsSection from "./components/sections/FollowUsSection";
+import FollowUsSection from "./components/sections/FollowUsSection";
 import FooterSection from "./components/sections/FooterSection";
 import HighlightedCategoriesSection from "./components/sections/HighlightedCategoriesSection";
 import IntroductionSection from "./components/sections/Introduction";
@@ -19,7 +19,7 @@ export default function Home() {
         <AboutUsSection />
         <TestimonialsSection />
         <WhyChooseUs />
-        {/* <FollowUsSection /> */}
+        <FollowUsSection />
         <TryIn3DSection />
         <VisitUsSection />
       </main>

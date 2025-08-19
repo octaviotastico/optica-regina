@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
+import { handleScrollClick } from "@/utils/scroll";
 
 const IntroductionSection = () => (
   <section
@@ -17,7 +18,10 @@ const IntroductionSection = () => (
       <p className="text-lg text-gray-600 mb-6">
         Probá nuestros modelos en línea con tecnología de prueba virtual 3D.
       </p>
-      <Button className="text-lg px-6 py-3 shadow cursor-pointer bg-brand hover:!bg-[#dd3a45]">
+      <Button
+        className="text-lg px-6 py-3 shadow cursor-pointer bg-brand hover:!bg-[#dd3a45]"
+        onClick={(e) => handleScrollClick(e, "try-in-3d")}
+        >
         Probar Ahora
       </Button>
     </motion.div>
