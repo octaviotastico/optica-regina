@@ -20,8 +20,8 @@ export default function Home() {
         <TestimonialsSection />
         <WhyChooseUs />
         <TryIn3DSection />
-        <FollowUsSection />
         <VisitUsSection />
+        <FollowUsSection />
       </main>
       <FooterSection />
     </>

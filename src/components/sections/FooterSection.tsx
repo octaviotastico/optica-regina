@@ -1,6 +1,13 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogHeader,
+  DialogTitle,
+  DialogDescription,
+  DialogFooter,
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -10,18 +17,29 @@ import {
   Mail,
   MapPin,
   MessageCircle,
-  Phone
+  Phone,
 } from "lucide-react";
 
+/**
+ * Footer responsive refinements
+ * - Mobile-first paddings (px-4) and tighter gaps
+ * - More fluid type sizes with responsive classes
+ * - Prevent overflows (min-w-0) and allow wrapping where needed
+ * - Larger touch targets on mobile for social links
+ * - Safer external links (noopener/noreferrer)
+ * - Newsletter form: full width on mobile, inline on ≥sm; sane heights
+ * - Bottom bar: wraps nicely and stays tappable
+ */
+
 const Logo = () => (
-  <div className="flex items-center gap-3">
+  <div className="flex items-center gap-3 min-w-0">
     <img
       src="/logo.svg"
       alt="Óptica Regina Elena"
       className="h-8 w-auto hidden sm:block"
       onError={(e) => ((e.currentTarget.style.display = "none"))}
     />
-    <span className="text-xl font-extrabold tracking-tight">
+    <span className="text-lg sm:text-xl font-extrabold tracking-tight text-balance">
       Óptica <span className="text-brand">Regina Elena</span>
     </span>
   </div>
@@ -40,7 +58,13 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.25 } },
 };
 
-const LinkItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
+const LinkItem = ({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) => (
   <li className="leading-8">
     <a
       href={href}
@@ -58,7 +82,7 @@ export default function FooterSection() {
   const [openReturns, setOpenReturns] = useState(false);
 
   return (
-    <footer className="relative border-t border-gray-100">
+    <footer className="$1 w-full overflow-x-clip">
       {/* Top CTA strip */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
@@ -67,16 +91,16 @@ export default function FooterSection() {
         transition={{ duration: 0.35 }}
         className="bg-gradient-to-r from-red-400 to-[#dd3a45] text-white"
       >
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <h3 className="text-2xl md:text-3xl font-bold">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-balance">
             ¿Listo para ver mejor hoy?
           </h3>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button
               variant="outline"
               asChild
-              className="px-6 py-5 text-base border-white bg-transparent hover:bg-white/10 hover:text-white"
+              className="px-5 py-4 sm:py-5 text-base border-white bg-transparent hover:bg-white/10 hover:text-white"
             >
               <a href="#visit-us">Visitanos</a>
             </Button>
@@ -90,45 +114,51 @@ export default function FooterSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto px-6 py-14"
+        className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-14"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-8 sm:gap-10 min-w-0">
           {/* Brand + blurb */}
-          <motion.div variants={item} className="lg:col-span-2">
+          <motion.div variants={item} className="lg:col-span-2 min-w-0">
             <Logo />
-            <p className="text-gray-600 mt-4 max-w-md">
+            <p className="text-gray-600 mt-4 max-w-prose">
               Más de <strong>20 años</strong> cuidando tu salud visual en Córdoba,
               combinando atención profesional y tecnología 3D para que elijas
               con seguridad y estilo.
             </p>
 
             {/* Socials */}
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-2 sm:gap-3 mt-6">
               <a
                 href="https://www.instagram.com/opticareginaelena"
                 aria-label="Instagram"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <Instagram className="size-5" />
               </a>
               <a
                 href="https://www.facebook.com/OpticaReginaElena/"
                 aria-label="Facebook"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <Facebook className="size-5" />
               </a>
               <a
                 href="mailto:hola@opticareginaelena.com"
                 aria-label="Email"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <Mail className="size-5" />
               </a>
               <a
                 href="https://api.whatsapp.com/send?phone=5493513570864&text=Tenemos%20esos%20lentes%20que%20busc%C3%A1s!%20%F0%9F%98%8E%20%C2%BFen%20qu%C3%A9%20podemos%20ayudarte%3F"
                 aria-label="WhatsApp"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <MessageCircle className="size-5" />
               </a>
@@ -137,10 +167,10 @@ export default function FooterSection() {
 
           {/* Navegación */}
           <motion.div variants={item}>
-            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase">
+            <h4 className="text-xs sm:text-sm font-semibold tracking-wider text-gray-900 uppercase">
               Explorar
             </h4>
-            <ul className="mt-4 text-sm">
+            <ul className="mt-3 sm:mt-4 text-sm">
               <LinkItem href="#inicio">Inicio</LinkItem>
               <LinkItem href="#categories">Categorías</LinkItem>
               <LinkItem href="#about-us">¿Quiénes Somos?</LinkItem>
@@ -151,10 +181,10 @@ export default function FooterSection() {
 
           {/* Ayuda */}
           <motion.div variants={item}>
-            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase">
+            <h4 className="text-xs sm:text-sm font-semibold tracking-wider text-gray-900 uppercase">
               Ayuda
             </h4>
-            <ul className="mt-4 text-sm">
+            <ul className="mt-3 sm:mt-4 text-sm">
               <LinkItem href="#try-3d">Prueba Virtual</LinkItem>
               <LinkItem href="#visit-us">Cómo Llegar</LinkItem>
               <LinkItem href="#faq">Preguntas Frecuentes</LinkItem>
@@ -164,25 +194,25 @@ export default function FooterSection() {
 
           {/* Contacto & Horarios */}
           <motion.div variants={item}>
-            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase">
+            <h4 className="text-xs sm:text-sm font-semibold tracking-wider text-gray-900 uppercase">
               Contacto
             </h4>
-            <ul className="mt-4 text-sm space-y-3 text-gray-600">
-              <li className="flex items-start gap-3">
-                <MapPin className="size-5 text-brand mt-0.5" />
-                <span>Roma 535, Córdoba Capital</span>
+            <ul className="mt-3 sm:mt-4 text-sm space-y-3 text-gray-600">
+              <li className="flex items-start gap-3 min-w-0">
+                <MapPin className="size-5 text-brand mt-0.5 shrink-0" />
+                <span className="break-words">Roma 535, Córdoba Capital</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="size-5 text-brand mt-0.5" />
+                <Phone className="size-5 text-brand mt-0.5 shrink-0" />
                 <a href="tel:+543513570864" className="hover:text-gray-900">
                   +54 351 357-0864
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="size-5 text-brand mt-0.5" />
+              <li className="flex items-start gap-3 min-w-0">
+                <Mail className="size-5 text-brand mt-0.5 shrink-0" />
                 <a
                   href="mailto:hola@opticareginaelena.com"
-                  className="hover:text-gray-900"
+                  className="hover:text-gray-900 break-all"
                 >
                   hola@opticareginaelena.com
                 </a>
@@ -194,13 +224,13 @@ export default function FooterSection() {
         {/* Newsletter */}
         <motion.div
           variants={item}
-          className="mt-10 rounded-2xl border border-gray-200 p-5 sm:p-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
+          className="mt-10 rounded-2xl border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
         >
-          <div>
-            <p className="text-sm font-semibold tracking-wide text-gray-900 uppercase">
+          <div className="min-w-0">
+            <p className="text-xs sm:text-sm font-semibold tracking-wide text-gray-900 uppercase">
               Novedades
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               Recibí promos y nuevos modelos (poquitos emails, lo prometemos).
             </p>
           </div>
@@ -219,16 +249,16 @@ export default function FooterSection() {
               alert("¡Gracias por suscribirte!");
               form.reset();
             }}
-            className="w-full md:w-auto flex flex-col sm:flex-row gap-3"
+            className="w-full md:w-auto flex flex-col sm:flex-row sm:items-stretch gap-3"
           >
             <input
               name="email"
               type="email"
               required
               placeholder="tu@email.com"
-              className="w-full sm:w-80 rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-4 focus:ring-brand/20"
+              className="w-full sm:flex-1 sm:min-w-0 md:w-80 rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-4 focus:ring-brand/20"
             />
-            <Button type="submit" className="px-5 py-6 bg-brand hover:!bg-[#dd3a45]">
+            <Button type="submit" className="h-[48px] sm:h-[52px] px-5 bg-brand hover:!bg-[#dd3a45]">
               Suscribirme
             </Button>
           </form>
@@ -237,16 +267,19 @@ export default function FooterSection() {
 
       {/* Bottom bar */}
       <div className="border-t border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 py-6 text-sm flex flex-col md:flex-row items-center justify-between gap-3 text-gray-500">
-          <p className="flex items-center gap-1">
-            © {new Date().getFullYear()} Óptica Regina Elena — Hecho con{" "}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-5 text-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-3 text-gray-500">
+          <p className="flex items-center gap-1 flex-wrap">
+            © {new Date().getFullYear()} Óptica Regina Elena — Hecho con {" "}
             <Heart className="size-4 text-brand" /> en Córdoba
           </p>
-          <ul className="flex flex-wrap items-center gap-4">
+          <ul className="flex flex-wrap items-center gap-3 sm:gap-4">
             <li>
               <a
                 href="#devoluciones"
-                onClick={(e) => { e.preventDefault(); setOpenReturns(true); }}
+                onClick={(e) => {
+                  e.preventDefault();
+                  setOpenReturns(true);
+                }}
                 className="hover:text-gray-800 cursor-pointer"
               >
                 Cambios y Devoluciones
@@ -261,7 +294,9 @@ export default function FooterSection() {
         <DialogContent className="sm:max-w-lg">
           <DialogHeader>
             <DialogTitle>Política de Cambios y Devoluciones</DialogTitle>
-            <DialogDescription>Texto genérico — reemplazalo por tus condiciones reales.</DialogDescription>
+            <DialogDescription>
+              Texto genérico — reemplazalo por tus condiciones reales.
+            </DialogDescription>
           </DialogHeader>
 
           <div className="prose prose-sm max-w-none text-gray-700 space-y-3">
@@ -277,14 +312,23 @@ export default function FooterSection() {
               <li>Devoluciones: reintegro según medio de pago, dentro de 5 a 10 días hábiles.</li>
             </ul>
             <p>
-              Para iniciar un cambio o devolución, escribinos a{" "}
-              <a href="mailto:hola@opticareginaelena.com" className="text-brand underline">
+              Para iniciar un cambio o devolución, escribinos a {" "}
+              <a
+                href="mailto:hola@opticareginaelena.com"
+                className="text-brand underline"
+              >
                 hola@opticareginaelena.com
               </a>{" "}
-              o por WhatsApp al{" "}
-              <a href="https://api.whatsapp.com/send?phone=5493513570864" target="_blank" rel="noreferrer" className="text-brand underline">
+              o por WhatsApp al {" "}
+              <a
+                href="https://api.whatsapp.com/send?phone=5493513570864"
+                target="_blank"
+                rel="noreferrer"
+                className="text-brand underline"
+              >
                 +54 9 351 357-0864
-              </a>.
+              </a>
+              .
             </p>
             <p className="text-xs text-gray-500">
               Vigente a partir del 01/01/2025. Sujeto a modificaciones sin previo aviso.
@@ -292,8 +336,13 @@ export default function FooterSection() {
           </div>
 
           <DialogFooter className="mt-4">
-            <Button variant="outline" onClick={() => setOpenReturns(false)}>Cerrar</Button>
-            <Button className="bg-brand hover:!bg-[#dd3a45]" onClick={() => setOpenReturns(false)}>
+            <Button variant="outline" onClick={() => setOpenReturns(false)}>
+              Cerrar
+            </Button>
+            <Button
+              className="bg-brand hover:!bg-[#dd3a45]"
+              onClick={() => setOpenReturns(false)}
+            >
               Aceptar
             </Button>
           </DialogFooter>
