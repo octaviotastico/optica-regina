@@ -158,7 +158,7 @@ export const Header = () => {
             <motion.nav
               key="drawer"
               id="mobile-menu"
-              className="fixed right-9 top-24 z-[70] rounded-xl w-full max-w-[calc(100vw-4rem)] bg-white/50 shadow-2xl p-6 flex flex-col md:hidden"
+              className="fixed right-[5vw] top-24 z-[70] rounded-xl w-fit min-w-64 max-w-[90vw] bg-white/50 shadow-2xl p-6 flex flex-col md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "120%" }}
