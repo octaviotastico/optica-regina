@@ -136,8 +136,8 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Navegación */}
-          <motion.div variants={item}>
-            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase">
+          <motion.div variants={item} className="max-sm:text-center">
+            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Explorar
             </h4>
             <ul className="mt-4 text-sm">
@@ -150,8 +150,8 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Ayuda */}
-          <motion.div variants={item}>
-            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase">
+          <motion.div variants={item} className="max-sm:text-center">
+            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Ayuda
             </h4>
             <ul className="mt-4 text-sm">
@@ -163,11 +163,11 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Contacto & Horarios */}
-          <motion.div variants={item}>
-            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase">
+          <motion.div variants={item} className="max-sm:text-center">
+            <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Contacto
             </h4>
-            <ul className="mt-4 text-sm space-y-3 text-gray-600">
+            <ul className="mt-4 text-sm space-y-3 text-gray-600 max-sm:place-items-center max-sm:-ml-4">
               <li className="flex items-start gap-3">
                 <MapPin className="size-5 text-brand mt-0.5" />
                 <span>Roma 535, Córdoba Capital</span>
