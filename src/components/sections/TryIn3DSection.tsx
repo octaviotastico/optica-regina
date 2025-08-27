@@ -13,8 +13,8 @@ export function GlassesModel() {
 }
 
 export const GlassesViewer = () => (
-  <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-2xl shadow-inner cursor-grab">
-    <Canvas camera={{ position: [-7, 3, 12], fov: 60 }}>
+  <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-2xl shadow-inner cursor-grab max-sm:max-h-96 max-sm:min-h-56">
+    <Canvas camera={{ position: [-7, 3, 12], fov: 60 }} className="max-sm:max-h-96 max-sm:min-h-56">
       <ambientLight intensity={0.5} />
       <directionalLight position={[5, 5, 5]} />
       <Suspense fallback={null}>
@@ -34,7 +34,7 @@ const TryIn3DSection = () => (
       experiencia interactiva.
     </p>
     <div className="mx-auto flex flex-col lg:flex-row gap-8 items-stretch text-left">
-      <div className="flex-3 min-h-[500px] lg:min-h-0">
+      <div className="flex-3 min-h-[500px] lg:min-h-0 max-sm:max-h-96 max-sm:min-h-56">
         <GlassesViewer />
       </div>
       <Card className="flex-2 p-0 bg-gradient-to-br from-[#FFFFFF] to-gray-50">
