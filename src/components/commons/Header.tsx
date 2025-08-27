@@ -158,7 +158,7 @@ export const Header = () => {
             <motion.nav
               key="drawer"
               id="mobile-menu"
-              className="fixed right-9 top-24 z-[70] rounded-xl w-full max-w-[20rem] bg-white/50 shadow-2xl p-6 flex flex-col md:hidden"
+              className="fixed right-9 top-24 z-[70] rounded-xl w-full max-w-[calc(100vw-4rem)] bg-white/50 shadow-2xl p-6 flex flex-col md:hidden"
               initial={{ x: "100%" }}
               animate={{ x: 0 }}
               exit={{ x: "120%" }}
@@ -172,14 +172,6 @@ export const Header = () => {
                 <span className="text-xl font-semibold text-brand">
                   Óptica Regina
                 </span>
-                <button
-                  type="button"
-                  aria-label="Cerrar menú"
-                  onClick={() => setMenuOpen(false)}
-                  className="rounded-lg p-2 hover:bg-gray-100"
-                >
-                  <X />
-                </button>
               </div>
 
               <div className="grid gap-4 text-base font-medium">
