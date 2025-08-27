@@ -1,6 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { handleScrollClick } from "@/utils/scroll";
+import { Menu } from "lucide-react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -100,6 +101,8 @@ export const Header = () => {
             Dónde Estamos
           </a>
         </nav>
+
+        <Menu className="hidden max-md:flex" />
       </motion.header>
     </AnimatePresence>
   );
