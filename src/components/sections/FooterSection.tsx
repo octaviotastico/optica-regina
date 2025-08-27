@@ -58,7 +58,7 @@ export default function FooterSection() {
   const [openReturns, setOpenReturns] = useState(false);
 
   return (
-    <footer className="relative border-t border-gray-100">
+    <footer className="relative border-t border-gray-100 max-w-screen">
       {/* Top CTA strip */}
       <motion.div
         initial={{ opacity: 0, y: 10 }}
