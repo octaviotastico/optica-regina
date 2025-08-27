@@ -4,7 +4,7 @@ import { handleScrollClick } from "@/utils/scroll";
 
 const IntroductionSection = () => (
   <section
-    className="grid md:grid-cols-2 gap-6 p-8 items-center max-sm:p-0"
+    className="grid sm:grid-cols-2 gap-8 p-8 items-center max-sm:p-0"
     id="introduction"
   >
     <motion.div
@@ -36,7 +36,7 @@ const IntroductionSection = () => (
       <img
         src="./banner-2.png"
         alt="Modelos de gafas"
-        className="w-full max-w-xl"
+        className="w-full max-h-[500px] object-cover"
       />
     </motion.div>
   </section>
