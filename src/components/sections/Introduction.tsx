@@ -11,7 +11,7 @@ const IntroductionSection = () => (
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-sm:bg-[url('./banner-2-mobile.png')] max-sm:bg-no-repeat max-sm:bg-cover max-sm:bg-center max-sm:p-6 max-sm:py-10"
+      className="max-sm:bg-[url('/banner-2-mobile.png')] max-sm:bg-no-repeat max-sm:bg-cover max-sm:bg-center max-sm:p-6 max-sm:py-10"
     >
       <h1 className="text-5xl font-bold mb-4">
         Descubrí tus Próximos Lentes Favoritos
@@ -34,7 +34,7 @@ const IntroductionSection = () => (
       transition={{ duration: 0.3, delay: 0.1 }}
     >
       <img
-        src="./banner-2.png"
+        src="/banner-2.png"
         alt="Modelos de gafas"
         className="w-full max-h-[500px] object-cover"
       />
