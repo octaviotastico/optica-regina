@@ -1,110 +1,238 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { handleScrollClick } from "@/utils/scroll";
-import { Menu } from "lucide-react";
+import { Menu, X } from "lucide-react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
+  // Header scroll effect
   useEffect(() => {
-    const onScroll = () => {
-      setScrolled(window.scrollY > 10);
-    };
+    const onScroll = () => setScrolled(window.scrollY > 10);
     window.addEventListener("scroll", onScroll);
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  return (
-    <AnimatePresence>
-      <motion.header
-        initial={false}
-        animate={scrolled ? "scrolled" : "top"}
-        variants={{
-          top: {
-            width: "100%",
-            borderRadius: "0px",
-            top: 0,
-            left: 0,
-            right: 0,
-            position: "fixed",
-            padding: "1.5rem 2rem",
-            background: "#fff",
-            boxShadow: "none",
-          },
-          scrolled: {
-            width: "90%",
-            top: "1rem",
-            left: "50%",
-            x: "-50%",
-            borderRadius: "1.5rem",
-            position: "fixed",
-            padding: "0.75rem 1.5rem",
-            background: "rgba(255, 255, 255, 0.75)",
-            boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-            backdropFilter: "blur(12px)",
-          },
-        }}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="z-50 flex justify-between items-center shadow-sm text-gray-800 max-w-screen"
-      >
-        {/* Logo */}
-        <a
-          href="#inicio"
-          onClick={(e) => handleScrollClick(e, "inicio")}
-          className="text-2xl font-bold text-brand tracking-tight cursor-pointer"
-        >
-          Óptica Regina
-        </a>
+  // Close on Esc + lock body scroll when menu is open
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setMenuOpen(false);
+    };
+    document.addEventListener("keydown", onKeyDown);
+    if (menuOpen) {
+      const prev = document.body.style.overflow;
+      document.body.style.overflow = "hidden";
+      return () => {
+        document.body.style.overflow = prev;
+        document.removeEventListener("keydown", onKeyDown);
+      };
+    }
+    return () => document.removeEventListener("keydown", onKeyDown);
+  }, [menuOpen]);
 
-        {/* Navigation Links */}
-        <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+  const onLink = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    handleScrollClick(e, id);
+    setMenuOpen(false);
+  };
+
+  return (
+    <>
+      <AnimatePresence>
+        <motion.header
+          initial={false}
+          animate={scrolled ? "scrolled" : "top"}
+          variants={{
+            top: {
+              width: "100%",
+              borderRadius: "0px",
+              top: 0,
+              left: 0,
+              right: 0,
+              position: "fixed",
+              padding: "1.5rem 2rem",
+              background: "#fff",
+              boxShadow: "none",
+            },
+            scrolled: {
+              width: "90%",
+              top: "1rem",
+              left: "50%",
+              x: "-50%",
+              borderRadius: "1.5rem",
+              position: "fixed",
+              padding: "0.75rem 1.5rem",
+              background: "rgba(255, 255, 255, 0.75)",
+              boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+              backdropFilter: "blur(12px)",
+            },
+          }}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="z-50 flex justify-between items-center shadow-sm text-gray-800 max-w-screen"
+        >
+          {/* Logo */}
           <a
             href="#inicio"
-            onClick={(e) => handleScrollClick(e, "inicio")}
-            className="hover:text-brand transition-colors cursor-pointer"
+            onClick={(e) => onLink(e, "inicio")}
+            className="text-2xl font-bold text-brand tracking-tight cursor-pointer"
           >
-            Inicio
+            Óptica Regina
           </a>
-          <a
-            href="#categories"
-            onClick={(e) => handleScrollClick(e, "categories")}
-            className="hover:text-brand transition-colors cursor-pointer"
-          >
-            Categorías
-          </a>
-          <a
-            href="#about-us"
-            onClick={(e) => handleScrollClick(e, "about-us")}
-            className="hover:text-brand transition-colors cursor-pointer"
-          >
-            Nosotros
-          </a>
-          <a
-            href="#testimonials"
-            onClick={(e) => handleScrollClick(e, "testimonials")}
-            className="hover:text-brand transition-colors cursor-pointer"
-          >
-            Testimonios
-          </a>
-          <a
-            href="#try-in-3d"
-            onClick={(e) => handleScrollClick(e, "try-in-3d")}
-            className="hover:text-brand transition-colors cursor-pointer"
-          >
-            Probar en 3D
-          </a>
-          <a
-            href="#visit-us"
-            onClick={(e) => handleScrollClick(e, "visit-us")}
-            className="hover:text-brand transition-colors cursor-pointer"
-          >
-            Dónde Estamos
-          </a>
-        </nav>
 
-        <Menu className="hidden max-md:flex" />
-      </motion.header>
-    </AnimatePresence>
+          {/* Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
+            <a
+              href="#inicio"
+              onClick={(e) => onLink(e, "inicio")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Inicio
+            </a>
+            <a
+              href="#categories"
+              onClick={(e) => onLink(e, "categories")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Categorías
+            </a>
+            <a
+              href="#about-us"
+              onClick={(e) => onLink(e, "about-us")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Nosotros
+            </a>
+            <a
+              href="#testimonials"
+              onClick={(e) => onLink(e, "testimonials")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Testimonios
+            </a>
+            <a
+              href="#try-in-3d"
+              onClick={(e) => onLink(e, "try-in-3d")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Probar en 3D
+            </a>
+            <a
+              href="#visit-us"
+              onClick={(e) => onLink(e, "visit-us")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Dónde Estamos
+            </a>
+          </nav>
+
+          {/* Mobile Burger */}
+          <button
+            type="button"
+            aria-label={menuOpen ? "Cerrar menú" : "Abrir menú"}
+            aria-haspopup="menu"
+            aria-controls="mobile-menu"
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((v) => !v)}
+            className="md:hidden inline-flex items-center justify-center rounded-xl p-2 hover:bg-gray-100 active:scale-95 transition"
+          >
+            {menuOpen ? <X /> : <Menu />}
+          </button>
+        </motion.header>
+      </AnimatePresence>
+
+      {/* Mobile Menu (overlay + drawer) */}
+      <AnimatePresence>
+        {menuOpen && (
+          <>
+            {/* Overlay */}
+            <motion.div
+              key="overlay"
+              className="fixed inset-0 z-[60] bg-black/10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+            />
+
+            {/* Drawer */}
+            <motion.nav
+              key="drawer"
+              id="mobile-menu"
+              className="fixed right-9 top-24 z-[70] rounded-xl w-full max-w-[20rem] bg-white/50 shadow-2xl p-6 flex flex-col md:hidden"
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "120%" }}
+              transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              style={{
+                boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
+                backdropFilter: "blur(12px)",
+              }}
+            >
+              <div className="mb-6 flex items-center justify-between">
+                <span className="text-xl font-semibold text-brand">
+                  Óptica Regina
+                </span>
+                <button
+                  type="button"
+                  aria-label="Cerrar menú"
+                  onClick={() => setMenuOpen(false)}
+                  className="rounded-lg p-2 hover:bg-gray-100"
+                >
+                  <X />
+                </button>
+              </div>
+
+              <div className="grid gap-4 text-base font-medium">
+                <a
+                  href="#inicio"
+                  onClick={(e) => onLink(e, "inicio")}
+                  className="py-2 hover:text-brand"
+                >
+                  Inicio
+                </a>
+                <a
+                  href="#categories"
+                  onClick={(e) => onLink(e, "categories")}
+                  className="py-2 hover:text-brand"
+                >
+                  Categorías
+                </a>
+                <a
+                  href="#about-us"
+                  onClick={(e) => onLink(e, "about-us")}
+                  className="py-2 hover:text-brand"
+                >
+                  Nosotros
+                </a>
+                <a
+                  href="#testimonials"
+                  onClick={(e) => onLink(e, "testimonials")}
+                  className="py-2 hover:text-brand"
+                >
+                  Testimonios
+                </a>
+                <a
+                  href="#try-in-3d"
+                  onClick={(e) => onLink(e, "try-in-3d")}
+                  className="py-2 hover:text-brand"
+                >
+                  Probar en 3D
+                </a>
+                <a
+                  href="#visit-us"
+                  onClick={(e) => onLink(e, "visit-us")}
+                  className="py-2 hover:text-brand"
+                >
+                  Dónde Estamos
+                </a>
+              </div>
+
+              {/* optional footer / socials / CTA can go here */}
+            </motion.nav>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 };
 
