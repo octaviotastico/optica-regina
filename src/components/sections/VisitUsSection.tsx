@@ -89,7 +89,7 @@ export function OpeningHours() {
         {Object.entries(openingHours).map(([day, hours]) => (
           <div
             key={day}
-            className={`flex justify-between ${day === today ? "font-semibold text-green-700" : ""}`}
+            className={`flex justify-between text-center gap-2 items-center ${day === today ? "font-semibold text-green-700" : ""}`}
           >
             <span className="capitalize">{day}</span>
             <span>{hours}</span>
