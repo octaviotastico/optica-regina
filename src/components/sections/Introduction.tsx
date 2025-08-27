@@ -4,13 +4,15 @@ import { handleScrollClick } from "@/utils/scroll";
 
 const IntroductionSection = () => (
   <section
-    className="grid md:grid-cols-2 gap-6 p-8 items-center"
+    className="grid md:grid-cols-2 gap-6 p-8 items-center max-sm:p-0"
     id="introduction"
   >
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
+      // On phone I want a background image (same as display.png on desktop), but being the background of the div
+      className="max-sm:bg-[url('./display-mobile.png')] max-sm:bg-no-repeat max-sm:bg-cover max-sm:bg-top max-sm:p-4"
     >
       <h1 className="text-5xl font-bold mb-4">
         Descubrí tus Próximos Lentes Favoritos
@@ -21,13 +23,13 @@ const IntroductionSection = () => (
       <Button
         className="text-lg px-6 py-3 shadow cursor-pointer bg-brand hover:!bg-[#dd3a45]"
         onClick={(e) => handleScrollClick(e, "try-in-3d")}
-        >
+      >
         Probar Ahora
       </Button>
     </motion.div>
 
     <motion.div
-      className="w-full h-full flex justify-end"
+      className="w-full h-full flex justify-end max-sm:hidden"
       initial={{ scale: 0.9, opacity: 0 }}
       animate={{ scale: 1, opacity: 1 }}
       transition={{ duration: 0.3, delay: 0.1 }}
