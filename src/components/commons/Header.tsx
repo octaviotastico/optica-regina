@@ -44,7 +44,7 @@ export const Header = () => {
           },
         }}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        className="z-50 flex justify-between items-center shadow-sm text-gray-800"
+        className="z-50 flex justify-between items-center shadow-sm text-gray-800 max-w-screen"
       >
         {/* Logo */}
         <a
