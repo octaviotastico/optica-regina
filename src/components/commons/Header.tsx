@@ -7,6 +7,22 @@ export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [screenSize, setScreenSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('xl');
+
+  // Screen size detection
+  useEffect(() => {
+    const updateScreenSize = () => {
+      const width = window.innerWidth;
+      if (width < 768) setScreenSize('sm');
+      else if (width < 1024) setScreenSize('md');
+      else if (width < 1280) setScreenSize('lg');
+      else setScreenSize('xl');
+    };
+
+    updateScreenSize();
+    window.addEventListener('resize', updateScreenSize);
+    return () => window.removeEventListener('resize', updateScreenSize);
+  }, []);
 
   // Header scroll effect
   useEffect(() => {
@@ -55,21 +71,50 @@ export const Header = () => {
     setDropdownOpen(false);
   };
 
-  const primaryNavItems = [
-    { href: "#inicio", label: "Inicio" },
-    { href: "#categories", label: "Categorías" },
-    { href: "#about-us", label: "Nosotros" },
-    { href: "#reviews", label: "Testimonios" },
-    { href: "#follow-us", label: "Síguenos" },
+  // Define nav items by breakpoint
+  const mdNavItems = [
+    { href: "#inicio", label: "Inicio", id: "inicio" },
+    { href: "#categories", label: "Categorías", id: "categories" },
+    { href: "#about-us", label: "Nosotros", id: "about-us" },
+    { href: "#reviews", label: "Testimonios", id: "reviews" },
   ];
 
-  const secondaryNavItems = [
-    { href: "#why-choose-us", label: "Por qué elegirnos" },
-    { href: "#try-in-3d", label: "Probar en 3D" },
-    { href: "#visit-us", label: "Dónde Estamos" }
+  const lgNavItems = [
+    { href: "#follow-us", label: "Síguenos", id: "follow-us" },
+    { href: "#why-choose-us", label: "Por qué elegirnos", id: "why-choose-us" },
   ];
 
-  const allNavItems = [...primaryNavItems, ...secondaryNavItems];
+  const xlNavItems = [
+    { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
+    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" }
+  ];
+
+  const allNavItems = [...mdNavItems, ...lgNavItems, ...xlNavItems];
+
+  // Get visible items based on screen size
+  const getVisibleItems = () => {
+    switch (screenSize) {
+      case 'md':
+        return mdNavItems;
+      case 'lg':
+        return [...mdNavItems, ...lgNavItems];
+      case 'xl':
+        return allNavItems;
+      default:
+        return [];
+    }
+  };
+
+  // Get dropdown items (items not visible in main nav)
+  const getDropdownItems = () => {
+    const visibleItems = getVisibleItems();
+    const visibleIds = visibleItems.map(item => item.id);
+    return allNavItems.filter(item => !visibleIds.includes(item.id));
+  };
+
+  const visibleNavItems = getVisibleItems();
+  const dropdownItems = getDropdownItems();
+  const hasDropdownItems = dropdownItems.length > 0;
 
   return (
     <>
@@ -114,72 +159,94 @@ export const Header = () => {
             Óptica Regina
           </a>
 
-          {/* Full Desktop Navigation (xl+) */}
-          <nav className="hidden xl:flex items-center gap-8 text-sm font-medium">
-            {allNavItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => onLink(e, item.href.slice(1))}
-                className="hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
-              >
-                {item.label}
-              </a>
-            ))}
-          </nav>
+          {/* Dynamic Desktop Navigation */}
+          <nav className="hidden md:flex items-center gap-4 text-sm font-medium">
+            <AnimatePresence mode="popLayout">
+              {visibleNavItems.map((item) => (
+                <motion.a
+                  key={item.id}
+                  href={item.href}
+                  onClick={(e) => onLink(e, item.id)}
+                  className="hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
+                  initial={{ opacity: 0, scale: 0.8, x: -20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, x: -20 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                  layout
+                >
+                  {item.label}
+                </motion.a>
+              ))}
+            </AnimatePresence>
 
-          {/* Hybrid Navigation (md to xl) - Primary items + More dropdown */}
-          <nav className="hidden md:flex xl:hidden items-center gap-4 text-sm font-medium">
-            {primaryNavItems.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => onLink(e, item.href.slice(1))}
-                className="hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
-              >
-                {item.label}
-              </a>
-            ))}
-
-            {/* More dropdown */}
-            <div className="relative" data-dropdown>
-              <button
-                type="button"
-                onClick={() => setDropdownOpen(!dropdownOpen)}
-                className="flex items-center gap-1 hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
-                aria-expanded={dropdownOpen}
-                aria-haspopup="menu"
-              >
-                Más
-                <ChevronDown
-                  size={14}
-                  className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
-                />
-              </button>
-
-              <AnimatePresence>
-                {dropdownOpen && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
-                    animate={{ opacity: 1, y: 0, scale: 1 }}
-                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
-                    transition={{ duration: 0.15 }}
-                    className="absolute right-0 top-full mt-2 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 py-2 z-[80]"
+            {/* Dynamic More dropdown - only show if there are hidden items */}
+            <AnimatePresence>
+              {hasDropdownItems && (
+                <motion.div
+                  className="relative"
+                  data-dropdown
+                  initial={{ opacity: 0, scale: 0.8, x: -20 }}
+                  animate={{ opacity: 1, scale: 1, x: 0 }}
+                  exit={{ opacity: 0, scale: 0.8, x: -20 }}
+                  transition={{
+                    duration: 0.3,
+                    ease: [0.4, 0, 0.2, 1]
+                  }}
+                  layout
+                >
+                  <button
+                    type="button"
+                    onClick={() => setDropdownOpen(!dropdownOpen)}
+                    className="flex items-center gap-1 hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
+                    aria-expanded={dropdownOpen}
+                    aria-haspopup="menu"
                   >
-                    {secondaryNavItems.map((item) => (
-                      <a
-                        key={item.href}
-                        href={item.href}
-                        onClick={(e) => onLink(e, item.href.slice(1))}
-                        className="block px-4 py-2 text-sm hover:bg-gray-50 hover:text-brand transition-colors cursor-pointer"
+                    Más
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                    />
+                  </button>
+
+                  <AnimatePresence>
+                    {dropdownOpen && (
+                      <motion.div
+                        initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                        exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                        transition={{ duration: 0.15 }}
+                        className="absolute right-0 top-full mt-2 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 py-2 z-[80]"
                       >
-                        {item.label}
-                      </a>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+                        <AnimatePresence mode="popLayout">
+                          {dropdownItems.map((item, index) => (
+                            <motion.a
+                              key={item.id}
+                              href={item.href}
+                              onClick={(e) => onLink(e, item.id)}
+                              className="block px-4 py-2 text-sm hover:bg-gray-50 hover:text-brand transition-colors cursor-pointer"
+                              initial={{ opacity: 0, x: -10 }}
+                              animate={{ opacity: 1, x: 0 }}
+                              exit={{ opacity: 0, x: -10 }}
+                              transition={{
+                                duration: 0.2,
+                                delay: index * 0.05,
+                                ease: [0.4, 0, 0.2, 1]
+                              }}
+                              layout
+                            >
+                              {item.label}
+                            </motion.a>
+                          ))}
+                        </AnimatePresence>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </nav>
 
           {/* Mobile Burger */}
@@ -232,16 +299,26 @@ export const Header = () => {
               </div>
 
               <div className="grid gap-4 text-base font-medium">
-                {allNavItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={(e) => onLink(e, item.href.slice(1))}
-                    className="py-2 hover:text-brand"
-                  >
-                    {item.label}
-                  </a>
-                ))}
+                <AnimatePresence mode="popLayout">
+                  {allNavItems.map((item, index) => (
+                    <motion.a
+                      key={item.id}
+                      href={item.href}
+                      onClick={(e) => onLink(e, item.id)}
+                      className="py-2 hover:text-brand"
+                      initial={{ opacity: 0, x: 20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      exit={{ opacity: 0, x: 20 }}
+                      transition={{
+                        duration: 0.2,
+                        delay: index * 0.05,
+                        ease: [0.4, 0, 0.2, 1]
+                      }}
+                    >
+                      {item.label}
+                    </motion.a>
+                  ))}
+                </AnimatePresence>
               </div>
             </motion.nav>
           </>
