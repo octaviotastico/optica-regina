@@ -1,6 +1,13 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import {
   ChevronRight,
@@ -9,9 +16,10 @@ import {
   Instagram,
   Mail,
   MapPin,
-  Phone
+  Phone,
 } from "lucide-react";
 import { useState } from "react";
+import { handleScrollClick } from "@/utils/scroll";
 
 const Logo = () => (
   <div className="flex items-center gap-3">
@@ -40,33 +48,22 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.25 } },
 };
 
-// Make LinkItem usable as <a> or as a button trigger
-const baseLinkClasses =
-  "group inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors";
-const underlineSpan =
-  "bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-300 bg-gradient-to-r from-brand/70 to-brand/70";
-
 const LinkItem = ({
-  href,
   onClick,
   children,
 }: {
-  href?: string;
-  onClick?: React.MouseEventHandler;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   children: React.ReactNode;
 }) => (
   <li className="leading-normal">
-    {href ? (
-      <a href={href} className={baseLinkClasses}>
-        <span className={underlineSpan}>{children}</span>
-        <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
-      </a>
-    ) : (
-      <button type="button" onClick={onClick} className={baseLinkClasses}>
-        <span className={underlineSpan}>{children}</span>
-        <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
-      </button>
-    )}
+    <Button variant="link" onClick={onClick} className="group inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer p-0 !px-0 h-auto">
+    {/* <button type="button" onClick={onClick} className={baseLinkClasses}> */}
+      <span className="bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-300 bg-gradient-to-r from-brand/70 to-brand/70">
+        {children}
+      </span>
+      <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
+    {/* </button> */}
+    </Button>
   </li>
 );
 
@@ -74,6 +71,11 @@ export default function FooterSection() {
   const [openReturns, setOpenReturns] = useState(false);
   const [openVirtual, setOpenVirtual] = useState(false);
   const [openDirections, setOpenDirections] = useState(false);
+
+  // same signature the Header uses
+  const onLink = (e: React.MouseEvent<HTMLElement>, id: string) => {
+    handleScrollClick(e, id);
+  };
 
   return (
     <footer className="relative border-t border-gray-100 max-w-screen">
@@ -95,8 +97,9 @@ export default function FooterSection() {
               variant="outline"
               asChild
               className="px-6 py-5 text-base border-white bg-transparent hover:bg-white/10 hover:text-white"
+              onClick={(e) => onLink(e, "visit-us")}
             >
-              <a href="#visit-us">Visitanos</a>
+              Visitanos
             </Button>
           </div>
         </div>
@@ -159,14 +162,14 @@ export default function FooterSection() {
               Explorar
             </h4>
             <ul className="mt-4 text-sm space-y-3">
-              <LinkItem href="#inicio">Inicio</LinkItem>
-              <LinkItem href="#categories">Categorías</LinkItem>
-              <LinkItem href="#about-us">¿Quiénes Somos?</LinkItem>
-              <LinkItem href="#reviews">Testimonios</LinkItem>
-              <LinkItem href="#follow-us">Síguenos</LinkItem>
-              <LinkItem href="#why-choose-us">¿Por qué Elegirnos?</LinkItem>
-              <LinkItem href="#try-in-3d">Probar en 3D</LinkItem>
-              <LinkItem href="#visit-us">Dónde Estamos</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "inicio")}>Inicio</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "categories")}>Categorías</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "about-us")}>¿Quiénes Somos?</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "reviews")}>Testimonios</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "follow-us")}>Síguenos</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "why-choose-us")}>¿Por qué Elegirnos?</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "visit-us")}>Dónde Estamos</LinkItem>
             </ul>
           </motion.div>
 
@@ -266,23 +269,22 @@ export default function FooterSection() {
           </p>
           <ul className="flex flex-wrap items-center gap-4">
             <li>
-              <a
-                href="#devoluciones"
-                onClick={(e) => { e.preventDefault(); setOpenReturns(true); }}
+              <button
+                type="button"
+                onClick={() => setOpenReturns(true)}
                 className="hover:text-gray-800 cursor-pointer"
               >
                 Cambios y Devoluciones
-              </a>
+              </button>
             </li>
           </ul>
         </div>
       </div>
 
-      {/* Modal: Cambios y Devoluciones (ya lo tenías) */}
+      {/* Modal: Cambios y Devoluciones */}
       <Dialog open={openReturns} onOpenChange={setOpenReturns}>
         <DialogContent className="sm:max-w-lg p-0 overflow-hidden">
           <div className="flex max-h-[90svh] sm:max-h-[80vh] flex-col">
-            {/* Header */}
             <div className="px-6 pb-4 pt-6 sticky top-0 bg-white z-10 border-b">
               <DialogHeader>
                 <DialogTitle>Política de Cambios y Devoluciones</DialogTitle>
@@ -291,8 +293,6 @@ export default function FooterSection() {
                 </DialogDescription>
               </DialogHeader>
             </div>
-
-            {/* Scrollable body */}
             <div className="px-6 py-4 overflow-y-auto">
               <div className="prose prose-sm max-w-none text-gray-700 space-y-3">
                 <p>
@@ -393,11 +393,13 @@ export default function FooterSection() {
                   Cerrar
                 </Button>
                 <Button
-                  className="bg-brand hover:!bg-[#dd3a45]"
-                  asChild
-                  onClick={() => setOpenVirtual(false)}
+                  className="bg-brand hover:!bg-[#dd3a45]]"
+                  onClick={(e) => {
+                    onLink(e, "try-in-3d");
+                    setOpenVirtual(false);
+                  }}
                 >
-                  <a href="#try-in-3d">Abrir Prueba Virtual</a>
+                  Abrir Prueba Virtual
                 </Button>
               </DialogFooter>
             </div>
@@ -463,7 +465,12 @@ export default function FooterSection() {
                 <Button variant="outline" onClick={() => setOpenDirections(false)}>
                   Cerrar
                 </Button>
-                <Button className="bg-brand hover:!bg-[#dd3a45]" asChild onClick={() => setOpenDirections(false)}>
+                {/* Enlace externo: se mantiene como <a> */}
+                <Button
+                  className="bg-brand hover:!bg-[#dd3a45]"
+                  asChild
+                  onClick={() => setOpenDirections(false)}
+                >
                   <a
                     href="https://maps.app.goo.gl/77pvfKjY66RAJ91H9"
                     target="_blank"
@@ -472,8 +479,14 @@ export default function FooterSection() {
                     Abrir en Google Maps
                   </a>
                 </Button>
-                <Button variant="outline" asChild onClick={() => setOpenDirections(false)}>
-                  <a href="#visit-us">Ver horarios y mapa</a>
+                <Button
+                  variant="outline"
+                  onClick={(e) => {
+                    onLink(e, "visit-us");
+                    setOpenDirections(false);
+                  }}
+                >
+                  Ver horarios y mapa
                 </Button>
               </DialogFooter>
             </div>
