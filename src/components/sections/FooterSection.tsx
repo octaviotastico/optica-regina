@@ -237,9 +237,12 @@ export default function FooterSection() {
       {/* Bottom bar */}
       <div className="border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-6 text-sm flex flex-col md:flex-row items-center justify-between gap-3 text-gray-500">
-          <p className="flex items-center gap-1">
-            © {new Date().getFullYear()} Óptica Regina Elena — Hecho con{" "}
-            <Heart className="size-4 text-brand" /> en Córdoba
+          <p className="flex flex-wrap items-center gap-1">
+            <span>
+              © {new Date().getFullYear()} Óptica Regina Elena — Hecho con {" "}
+              <Heart className="size-4 text-brand -mt-0.5 inline-block" aria-label="corazón" /> {" "}
+              en Córdoba
+            </span>
           </p>
           <ul className="flex flex-wrap items-center gap-4">
             <li>
