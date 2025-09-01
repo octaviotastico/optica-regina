@@ -1,11 +1,12 @@
 import { AnimatePresence, motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { handleScrollClick } from "@/utils/scroll";
-import { Menu, X } from "lucide-react";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [dropdownOpen, setDropdownOpen] = useState(false);
 
   // Header scroll effect
   useEffect(() => {
@@ -17,7 +18,10 @@ export const Header = () => {
   // Close on Esc + lock body scroll when menu is open
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setMenuOpen(false);
+      if (e.key === "Escape") {
+        setMenuOpen(false);
+        setDropdownOpen(false);
+      }
     };
     document.addEventListener("keydown", onKeyDown);
     if (menuOpen) {
@@ -31,10 +35,41 @@ export const Header = () => {
     return () => document.removeEventListener("keydown", onKeyDown);
   }, [menuOpen]);
 
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      const target = e.target as HTMLElement;
+      if (!target.closest('[data-dropdown]')) {
+        setDropdownOpen(false);
+      }
+    };
+    if (dropdownOpen) {
+      document.addEventListener('click', handleClickOutside);
+      return () => document.removeEventListener('click', handleClickOutside);
+    }
+  }, [dropdownOpen]);
+
   const onLink = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     handleScrollClick(e, id);
     setMenuOpen(false);
+    setDropdownOpen(false);
   };
+
+  const primaryNavItems = [
+    { href: "#inicio", label: "Inicio" },
+    { href: "#categories", label: "Categorías" },
+    { href: "#about-us", label: "Nosotros" },
+    { href: "#reviews", label: "Testimonios" },
+    { href: "#follow-us", label: "Síguenos" },
+  ];
+
+  const secondaryNavItems = [
+    { href: "#why-choose-us", label: "Por qué elegirnos" },
+    { href: "#try-in-3d", label: "Probar en 3D" },
+    { href: "#visit-us", label: "Dónde Estamos" }
+  ];
+
+  const allNavItems = [...primaryNavItems, ...secondaryNavItems];
 
   return (
     <>
@@ -74,69 +109,77 @@ export const Header = () => {
           <a
             href="#inicio"
             onClick={(e) => onLink(e, "inicio")}
-            className="text-2xl font-bold text-brand tracking-tight cursor-pointer"
+            className="text-2xl font-bold text-brand tracking-tight cursor-pointer flex-shrink-0"
           >
             Óptica Regina
           </a>
 
-          {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-medium">
-            <a
-              href="#inicio"
-              onClick={(e) => onLink(e, "inicio")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Inicio
-            </a>
-            <a
-              href="#categories"
-              onClick={(e) => onLink(e, "categories")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Categorías
-            </a>
-            <a
-              href="#about-us"
-              onClick={(e) => onLink(e, "about-us")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Nosotros
-            </a>
-            <a
-              href="#reviews"
-              onClick={(e) => onLink(e, "reviews")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Testimonios
-            </a>
-            <a
-              href="#follow-us"
-              onClick={(e) => onLink(e, "follow-us")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Síguenos
-            </a>
-            <a
-              href="#why-choose-us"
-              onClick={(e) => onLink(e, "why-choose-us")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Por qué elegirnos
-            </a>
-            <a
-              href="#try-in-3d"
-              onClick={(e) => onLink(e, "try-in-3d")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Probar en 3D
-            </a>
-            <a
-              href="#visit-us"
-              onClick={(e) => onLink(e, "visit-us")}
-              className="hover:text-brand transition-colors cursor-pointer"
-            >
-              Dónde Estamos
-            </a>
+          {/* Full Desktop Navigation (xl+) */}
+          <nav className="hidden xl:flex items-center gap-8 text-sm font-medium">
+            {allNavItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => onLink(e, item.href.slice(1))}
+                className="hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+
+          {/* Hybrid Navigation (md to xl) - Primary items + More dropdown */}
+          <nav className="hidden md:flex xl:hidden items-center gap-4 text-sm font-medium">
+            {primaryNavItems.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={(e) => onLink(e, item.href.slice(1))}
+                className="hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
+              >
+                {item.label}
+              </a>
+            ))}
+
+            {/* More dropdown */}
+            <div className="relative" data-dropdown>
+              <button
+                type="button"
+                onClick={() => setDropdownOpen(!dropdownOpen)}
+                className="flex items-center gap-1 hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
+                aria-expanded={dropdownOpen}
+                aria-haspopup="menu"
+              >
+                Más
+                <ChevronDown
+                  size={14}
+                  className={`transition-transform ${dropdownOpen ? 'rotate-180' : ''}`}
+                />
+              </button>
+
+              <AnimatePresence>
+                {dropdownOpen && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.95 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.95 }}
+                    transition={{ duration: 0.15 }}
+                    className="absolute right-0 top-full mt-2 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 py-2 z-[80]"
+                  >
+                    {secondaryNavItems.map((item) => (
+                      <a
+                        key={item.href}
+                        href={item.href}
+                        onClick={(e) => onLink(e, item.href.slice(1))}
+                        className="block px-4 py-2 text-sm hover:bg-gray-50 hover:text-brand transition-colors cursor-pointer"
+                      >
+                        {item.label}
+                      </a>
+                    ))}
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
           </nav>
 
           {/* Mobile Burger */}
@@ -189,62 +232,16 @@ export const Header = () => {
               </div>
 
               <div className="grid gap-4 text-base font-medium">
-                <a
-                  href="#inicio"
-                  onClick={(e) => onLink(e, "inicio")}
-                  className="py-2 hover:text-brand"
-                >
-                  Inicio
-                </a>
-                <a
-                  href="#categories"
-                  onClick={(e) => onLink(e, "categories")}
-                  className="py-2 hover:text-brand"
-                >
-                  Categorías
-                </a>
-                <a
-                  href="#about-us"
-                  onClick={(e) => onLink(e, "about-us")}
-                  className="py-2 hover:text-brand"
-                >
-                  Nosotros
-                </a>
-                <a
-                  href="#reviews"
-                  onClick={(e) => onLink(e, "reviews")}
-                  className="py-2 hover:text-brand"
-                >
-                  Testimonios
-                </a>
-                <a
-                  href="#follow-us"
-                  onClick={(e) => onLink(e, "follow-us")}
-                  className="py-2 hover:text-brand"
-                >
-                  Síguenos
-                </a>
-                <a
-                  href="#why-choose-us"
-                  onClick={(e) => onLink(e, "why-choose-us")}
-                  className="py-2 hover:text-brand"
-                >
-                  Por qué elegirnos
-                </a>
-                <a
-                  href="#try-in-3d"
-                  onClick={(e) => onLink(e, "try-in-3d")}
-                  className="py-2 hover:text-brand"
-                >
-                  Probar en 3D
-                </a>
-                <a
-                  href="#visit-us"
-                  onClick={(e) => onLink(e, "visit-us")}
-                  className="py-2 hover:text-brand"
-                >
-                  Dónde Estamos
-                </a>
+                {allNavItems.map((item) => (
+                  <a
+                    key={item.href}
+                    href={item.href}
+                    onClick={(e) => onLink(e, item.href.slice(1))}
+                    className="py-2 hover:text-brand"
+                  >
+                    {item.label}
+                  </a>
+                ))}
               </div>
             </motion.nav>
           </>
