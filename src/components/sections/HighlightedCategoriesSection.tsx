@@ -3,17 +3,17 @@ import ProductCard from "../commons/ProductCard";
 const HighlightedCategoriesSection = () => {
   const products = [
     {
-      name: "Gafas Urbanas",
+      name: "Diseño Urbano",
       desc: "Estilo moderno y versátil para el día a día.",
       img: "./urbanas.png",
     },
     {
-      name: "Diseño Minimal",
+      name: "Diseño Minimalista",
       desc: "Líneas limpias y elegantes para un look sofisticado.",
       img: "./minimalistas.png",
     },
     {
-      name: "Vintage Moderno",
+      name: "Diseño Vintage",
       desc: "Un toque retro con tecnología actual.",
       img: "./vintages.png",
     },

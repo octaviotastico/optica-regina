@@ -51,14 +51,14 @@ export const TestimonialsSection = () => {
         Lo Que Dicen Nuestros Clientes
       </h2>
       <Carousel
-        className="w-3/4 mx-auto cursor-grab select-none"
+        className="md:w-full lg:w-3/4 mx-auto cursor-grab select-none"
         opts={{ loop: true }}
       >
         <CarouselContent className="-ml-1">
           {googleReviews.map((t, index) => (
             <CarouselItem
               key={index}
-              className="pl-1 md:basis-1/2 lg:basis-1/3"
+              className="pl-1 md:basis-1/2"
             >
               <div className="p-2 h-full max-sm:p-0">
                 <Card className="h-full justify-center relative">
