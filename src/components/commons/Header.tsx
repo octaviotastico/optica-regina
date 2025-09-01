@@ -110,6 +110,20 @@ export const Header = () => {
               Testimonios
             </a>
             <a
+              href="#follow-us"
+              onClick={(e) => onLink(e, "follow-us")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Síguenos
+            </a>
+            <a
+              href="#why-choose-us"
+              onClick={(e) => onLink(e, "why-choose-us")}
+              className="hover:text-brand transition-colors cursor-pointer"
+            >
+              Por qué elegirnos
+            </a>
+            <a
               href="#try-in-3d"
               onClick={(e) => onLink(e, "try-in-3d")}
               className="hover:text-brand transition-colors cursor-pointer"
@@ -204,6 +218,20 @@ export const Header = () => {
                   Testimonios
                 </a>
                 <a
+                  href="#follow-us"
+                  onClick={(e) => onLink(e, "follow-us")}
+                  className="py-2 hover:text-brand"
+                >
+                  Síguenos
+                </a>
+                <a
+                  href="#why-choose-us"
+                  onClick={(e) => onLink(e, "why-choose-us")}
+                  className="py-2 hover:text-brand"
+                >
+                  Por qué elegirnos
+                </a>
+                <a
                   href="#try-in-3d"
                   onClick={(e) => onLink(e, "try-in-3d")}
                   className="py-2 hover:text-brand"
@@ -218,8 +246,6 @@ export const Header = () => {
                   Dónde Estamos
                 </a>
               </div>
-
-              {/* optional footer / socials / CTA can go here */}
             </motion.nav>
           </>
         )}
