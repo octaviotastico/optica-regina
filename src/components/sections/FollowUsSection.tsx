@@ -45,7 +45,7 @@ export const FollowUsSection = () => {
         </div>
 
         {/* Cards redes */}
-        <div className="mt-7 grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
+        <div className="mt-7 flex flex-wrap justify-center gap-4 sm:gap-6">
           <NetworkCard
             title="Instagram"
             handle="@opticareginaelena"
