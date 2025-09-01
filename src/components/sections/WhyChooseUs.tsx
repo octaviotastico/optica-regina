@@ -30,7 +30,7 @@ const features = [
 
 const WhyChooseUs = () => (
   <motion.section
-    id="features"
+    id="why-choose-us"
     className="p-8 md:px-20 bg-gray-100"
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
