@@ -356,7 +356,16 @@ export const Header = () => {
       {/* Measurement container for widths */}
       <div
         ref={measurementRef}
-        style={{ position: "absolute", visibility: "hidden", whiteSpace: "nowrap" }}
+        style={{
+          position: "fixed",
+          top: 0,
+          left: 0,
+          width: 0,
+          height: 0,
+          overflow: "hidden",
+          visibility: "hidden",
+          whiteSpace: "nowrap",
+        }}
         aria-hidden="true"
       >
         {allNavItems.map((item, i) => (
