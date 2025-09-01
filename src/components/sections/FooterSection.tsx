@@ -134,7 +134,7 @@ export default function FooterSection() {
             </div>
           </motion.div>
 
-          {/* Navegación */}
+          {/* Navigation */}
           <motion.div variants={item} className="max-sm:text-center">
             <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Explorar
@@ -143,8 +143,11 @@ export default function FooterSection() {
               <LinkItem href="#inicio">Inicio</LinkItem>
               <LinkItem href="#categories">Categorías</LinkItem>
               <LinkItem href="#about-us">¿Quiénes Somos?</LinkItem>
+              <LinkItem href="#reviews">Testimonios</LinkItem>
+              <LinkItem href="#follow-us">Síguenos</LinkItem>
               <LinkItem href="#why-choose-us">¿Por qué Elegirnos?</LinkItem>
-              <LinkItem href="#testimonials">Testimonios</LinkItem>
+              <LinkItem href="#try-in-3d">Probar en 3D</LinkItem>
+              <LinkItem href="#visit-us">Dónde Estamos</LinkItem>
             </ul>
           </motion.div>
 
@@ -154,10 +157,8 @@ export default function FooterSection() {
               Ayuda
             </h4>
             <ul className="mt-4 text-sm space-y-3">
-              <LinkItem href="#try-3d">Prueba Virtual</LinkItem>
-              <LinkItem href="#visit-us">Cómo Llegar</LinkItem>
-              <LinkItem href="#faq">Preguntas Frecuentes</LinkItem>
-              <LinkItem href="#contacto">Contacto</LinkItem>
+              <LinkItem>Prueba Virtual</LinkItem>
+              <LinkItem>Cómo Llegar</LinkItem>
             </ul>
           </motion.div>
 
@@ -258,48 +259,76 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* Modal Cambios y Devoluciones */}
+      {/* Modal for "Cambios y Devoluciones" */}
       <Dialog open={openReturns} onOpenChange={setOpenReturns}>
-        <DialogContent className="sm:max-w-lg">
-          <DialogHeader>
-            <DialogTitle>Política de Cambios y Devoluciones</DialogTitle>
-            <DialogDescription>Texto genérico — reemplazalo por tus condiciones reales.</DialogDescription>
-          </DialogHeader>
+        <DialogContent className="sm:max-w-lg p-0 overflow-hidden">
+          <div className="flex max-h-[90svh] sm:max-h-[80vh] flex-col">
+            {/* Header */}
+            <div className="px-6 pb-4 pt-6 sticky top-0 bg-white z-10 border-b">
+              <DialogHeader>
+                <DialogTitle>Política de Cambios y Devoluciones</DialogTitle>
+                <DialogDescription>
+                  Texto genérico — reemplazalo por tus condiciones reales.
+                </DialogDescription>
+              </DialogHeader>
+            </div>
 
-          <div className="prose prose-sm max-w-none text-gray-700 space-y-3">
-            <p>
-              Aceptamos cambios dentro de los <strong>30 días</strong> corridos desde la fecha de compra.
-              Los productos deben estar en perfecto estado, con su estuche y accesorios originales,
-              y presentar comprobante de compra.
-            </p>
-            <ul className="list-disc pl-5">
-              <li>Cambios por talle/modelo sujetos a disponibilidad.</li>
-              <li>No se aceptan productos rayados, dañados o con signos de uso.</li>
-              <li>Productos en promo: se respeta el precio abonado al momento de la compra.</li>
-              <li>Devoluciones: reintegro según medio de pago, dentro de 5 a 10 días hábiles.</li>
-            </ul>
-            <p>
-              Para iniciar un cambio o devolución, escribinos a{" "}
-              <a href="mailto:hola@opticareginaelena.com" className="text-brand underline">
-                hola@opticareginaelena.com
-              </a>{" "}
-              o por WhatsApp al{" "}
-              <a href="https://api.whatsapp.com/send?phone=5493513570864" target="_blank" rel="noreferrer" className="text-brand underline">
-                +54 9 351 357-0864
-              </a>.
-            </p>
-            <p className="text-xs text-gray-500">
-              Vigente a partir del 01/01/2025. Sujeto a modificaciones sin previo aviso.
-            </p>
+            {/* Scrollable body */}
+            <div className="px-6 py-4 overflow-y-auto">
+              <div className="prose prose-sm max-w-none text-gray-700 space-y-3">
+                <p>
+                  Aceptamos cambios dentro de los <strong>30 días</strong> corridos desde la
+                  fecha de compra. Los productos deben estar en perfecto estado, con su
+                  estuche y accesorios originales, y presentar comprobante de compra.
+                </p>
+                <ul className="list-disc pl-5">
+                  <li>Cambios por talle/modelo sujetos a disponibilidad.</li>
+                  <li>No se aceptan productos rayados, dañados o con signos de uso.</li>
+                  <li>
+                    Productos en promo: se respeta el precio abonado al momento de la compra.
+                  </li>
+                  <li>
+                    Devoluciones: reintegro según medio de pago, dentro de 5 a 10 días hábiles.
+                  </li>
+                </ul>
+                <p>
+                  Para iniciar un cambio o devolución, escribinos a{" "}
+                  <a href="mailto:hola@opticareginaelena.com" className="text-brand underline">
+                    hola@opticareginaelena.com
+                  </a>{" "}
+                  o por WhatsApp al{" "}
+                  <a
+                    href="https://api.whatsapp.com/send?phone=5493513570864"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="text-brand underline"
+                  >
+                    +54 9 351 357-0864
+                  </a>.
+                </p>
+                <p className="text-xs text-gray-500">
+                  Vigente a partir del 01/01/2025. Sujeto a modificaciones sin previo aviso.
+                </p>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 py-4 border-t sticky bottom-0 bg-white z-10">
+              <DialogFooter>
+                <Button variant="outline" onClick={() => setOpenReturns(false)}>
+                  Cerrar
+                </Button>
+                <Button
+                  className="bg-brand hover:!bg-[#dd3a45]"
+                  onClick={() => setOpenReturns(false)}
+                >
+                  Aceptar
+                </Button>
+              </DialogFooter>
+            </div>
           </div>
-
-          <DialogFooter className="mt-4">
-            <Button variant="outline" onClick={() => setOpenReturns(false)}>Cerrar</Button>
-            <Button className="bg-brand hover:!bg-[#dd3a45]" onClick={() => setOpenReturns(false)}>
-              Aceptar
-            </Button>
-          </DialogFooter>
         </DialogContent>
+
       </Dialog>
     </footer>
   );
