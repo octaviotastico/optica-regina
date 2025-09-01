@@ -10,17 +10,15 @@ import NetworkCard from "../commons/NetworkCard";
 
 /* ---------- DATA ---------- */
 const IG_POSTS = [
-  { thumb: "/social/ig1.jpg", href: "https://www.instagram.com/p/XXXXXXXX1/", alt: "IG 1" },
-  { thumb: "/social/ig2.jpg", href: "https://www.instagram.com/p/XXXXXXXX2/", alt: "IG 2" },
-  { thumb: "/social/ig3.jpg", href: "https://www.instagram.com/p/XXXXXXXX3/", alt: "IG 3" },
-  { thumb: "/social/ig4.jpg", href: "https://www.instagram.com/p/XXXXXXXX4/", alt: "IG 4" },
+  { thumb: "/ig_1.png", href: "https://www.instagram.com/p/DFnUmQWs9tf/", alt: "IG 1" },
+  { thumb: "/ig_2.png", href: "https://www.instagram.com/p/DJj3_Qrt2Zn/", alt: "IG 2" },
+  { thumb: "/ig_3.png", href: "https://www.instagram.com/p/DM0Q97Js_lp/", alt: "IG 3" },
 ];
 
 const FB_POSTS = [
-  { thumb: "/social/fb1.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/XXXX1", alt: "FB 1" },
-  { thumb: "/social/fb2.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/XXXX2", alt: "FB 2" },
-  { thumb: "/social/fb3.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/XXXX3", alt: "FB 3" },
-  { thumb: "/social/fb4.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/XXXX4", alt: "FB 4" },
+  { thumb: "/fb_1.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid02yTJfjLthzzfdD7NMuvr7x2wrmwHYX49sjjWS7HxHmhfXsF9FkP6VNcPWLqkVaj7Nl", alt: "FB 1" },
+  { thumb: "/fb_2.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid02rdCaJGU8oPTe4h9jnJYQgjgXMDFdcLTo6NBkyqA3sWZGgrqjCVgXzr6kyp4RivuPl", alt: "FB 2" },
+  { thumb: "/fb_3.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid0246BVfXx15V5YovTXn7x8U5QgCSxkFqwpjK3FU3w8JJZ3WNqWvLcJz2sTbAaaQy2Yl", alt: "FB 3" },
 ];
 
 /* ---------- PAGE ---------- */

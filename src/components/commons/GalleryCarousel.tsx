@@ -62,7 +62,7 @@ export const GalleryCarousel = ({ posts, ariaLabel }: { posts: { thumb: string; 
             className="
               group relative shrink-0 snap-center
               w-[78vw] xs:w-[68vw] sm:w-[48vw] md:w-[340px] lg:w-[360px]
-              aspect-[4/3]
+              aspect-square
             "
             aria-label={`${ariaLabel} ${i + 1}`}
           >
