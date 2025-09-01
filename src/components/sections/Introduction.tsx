@@ -4,14 +4,41 @@ import { handleScrollClick } from "@/utils/scroll";
 
 const IntroductionSection = () => (
   <section
-    className="grid sm:grid-cols-2 gap-8 p-8 items-center max-sm:p-0"
+    className="grid sm:grid-cols-2 gap-8 p-8 items-center max-sm:p-0 relative"
     id="introduction"
   >
+    <motion.div
+      className="absolute inset-0 max-sm:block hidden overflow-hidden"
+      style={{
+        backgroundImage: "url('/banner-2.png')",
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat"
+      }}
+      animate={{
+        backgroundPosition: ["0% 50%", "100% 50%", "0% 50%"]
+      }}
+      transition={{ duration: 60, repeat: Infinity, ease: "easeInOut" }}
+    />
+    <motion.div
+      className="absolute inset-0 max-sm:block hidden"
+      animate={{
+        background: [
+          "linear-gradient(90deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.75) 100%)",
+          "linear-gradient(270deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0.75) 100%)"
+        ]
+      }}
+      transition={{
+        duration: 3,
+        repeat: Infinity,
+        repeatType: "reverse",
+        ease: "easeInOut"
+      }}
+    />
     <motion.div
       initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
       transition={{ duration: 0.3 }}
-      className="max-sm:bg-[url('/banner-2-mobile.png')] max-sm:bg-no-repeat max-sm:bg-cover max-sm:bg-center max-sm:p-6 max-sm:py-10"
+      className="relative max-sm:p-6 max-sm:py-10"
     >
       <h1 className="text-5xl font-bold mb-4">
         Descubrí tus Próximos Lentes Favoritos
