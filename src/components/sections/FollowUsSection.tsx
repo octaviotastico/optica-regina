@@ -60,6 +60,13 @@ export const FollowUsSection = () => {
             cta="Ver página"
             profileUrl="https://www.facebook.com/OpticaReginaElena/"
           />
+          <NetworkCard
+            title="WhatsApp"
+            handle="+54 9 351 357-0864"
+            icon={<img src="/wsp.png" alt="WhatsApp" className="size-5 sm:size-6" />}
+            cta="Enviar mensaje"
+            profileUrl="https://wa.me/5493513570864"
+          />
         </div>
 
         {/* Toggle */}
