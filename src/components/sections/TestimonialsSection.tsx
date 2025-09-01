@@ -51,14 +51,14 @@ export const TestimonialsSection = () => {
         Lo Que Dicen Nuestros Clientes
       </h2>
       <Carousel
-        className="md:w-full lg:w-3/4 mx-auto cursor-grab select-none"
+        className="w-full max-w-full md:w-full lg:w-3/4 mx-auto cursor-grab select-none relative"
         opts={{ loop: true }}
       >
-        <CarouselContent className="-ml-1">
+        <CarouselContent className="-ml-1 max-sm:ml-0">
           {googleReviews.map((t, index) => (
             <CarouselItem
               key={index}
-              className="pl-1 md:basis-1/2"
+              className="pl-1 max-sm:pl-0 basis-full md:basis-1/2"
             >
               <div className="p-2 h-full max-sm:p-0">
                 <Card className="h-full justify-center relative">
@@ -91,8 +91,8 @@ export const TestimonialsSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="!bg-white shadow !border-gray-300" />
-        <CarouselNext className="!bg-white shadow !border-gray-300" />
+        <CarouselPrevious className="!bg-white shadow !border-gray-300 max-sm:left-0 max-sm:scale-75" />
+        <CarouselNext className="!bg-white shadow !border-gray-300 max-sm:right-0 max-sm:scale-75" />
       </Carousel>
     </section>
   );
