@@ -31,7 +31,7 @@ const features = [
 const WhyChooseUs = () => (
   <motion.section
     id="features"
-    className="p-8 md:px-20 bg-white"
+    className="p-8 md:px-20 bg-gray-100"
     initial={{ opacity: 0, y: 40 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.2 }}
@@ -47,11 +47,11 @@ const WhyChooseUs = () => (
       ¿Por qué Elegirnos?
     </motion.h2>
 
-    <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+    <div className="flex flex-wrap justify-center gap-8">
       {features.map(({ icon: Icon, title, description }, index) => (
         <motion.div
           key={title}
-          className="p-4 rounded-2xl bg-white/40 backdrop-blur-md border border-white/20 shadow-lg flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 hover:scale-[103%]"
+          className="p-4 rounded-2xl bg-white backdrop-blur-md border border-white shadow-md flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 hover:scale-[103%] cursor-pointer select-none sm:py-10 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] sm:min-w-[280px]"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
