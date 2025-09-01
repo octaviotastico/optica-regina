@@ -6,40 +6,38 @@ import {
   CarouselNext,
   CarouselPrevious,
 } from "@/components/ui/carousel";
+import { ExternalLink } from "lucide-react";
 
-const testimonials = [
+const googleReviews = [
   {
-    name: "Camila A.",
-    comment:
-      "Me asesoraron excelente y encontré los anteojos perfectos para mí.",
-    img: "./people.png",
+    name: "Dario Ruarte",
+    comment: "Atienden correctamente, los precios son los normales, y en general respetan los plazos de entrega. Un buen servicio aunque puede resultar dificultoso estacionar, ya que siempre hay vehículos en esa zona (por el Hospital)",
+    url: "https://maps.app.goo.gl/hCJ4DsX5Q54EbZq16",
+    img: "/review_1.png",
   },
   {
-    name: "Julián D.",
-    comment: "Tienen muchísima variedad y muy buena atención. ¡Volveré!",
-    img: "./people.png",
+    name: "Dania Maria Luz Ferreyra",
+    comment: "La atención un 10! De todas, con mucha paciencia, es un poco más caro pero si usas mucho las pantallas tiene filtros que pocas ópticas tienen",
+    url: "https://maps.app.goo.gl/4YbbKnMrDDsUEcFUA",
+    img: "/review_2.png",
   },
   {
-    name: "Florencia M.",
-    comment:
-      "Probé los modelos online y fue tal cual a cómo me quedaron. Muy conforme.",
-    img: "./people.png",
+    name: "Yolanda Medina",
+    comment: "Buena atención. Buen trato. Cumplen con los plazos de entrega, te avisan por teléfono cuando esta listo. Muy buena calidad de sus productos y trabajo.",
+    url: "https://maps.app.goo.gl/jV1NByHAQzHzWQQG6",
+    img: "/review_3.png",
   },
   {
-    name: "Martín R.",
-    comment: "Atención personalizada y profesional. Muy recomendable.",
-    img: "./people.png",
+    name: "Francisco Fermin",
+    comment: "Excelente atención, fui por unos lentes recetados y me fueron entregados muy rápido dentro del tema entendido con lo de la pandemia. Gracias.",
+    url: "https://maps.app.goo.gl/qW67tNTagFLHMJtt9",
+    img: "/review_4.png",
   },
   {
-    name: "Sofía L.",
-    comment:
-      "El sistema de prueba virtual me ayudó un montón. ¡Gracias Regina Elena!",
-    img: "./people.png",
-  },
-  {
-    name: "Lucas G.",
-    comment: "Servicio rápido, amable y con buenos precios.",
-    img: "./people.png",
+    name: "Alejandra Brandolin",
+    comment: "Excelente atención!! Tienen hermosas monturas,  de ultima moda, muy buena  calidad y buenos precios.",
+    url: "https://maps.app.goo.gl/strgg4zs1p9GMVbq8",
+    img: "/review_5.png",
   },
 ];
 
@@ -47,7 +45,7 @@ export const TestimonialsSection = () => {
   return (
     <section
       className="p-8 px-4 md:px-20 bg-gray-100 text-center"
-      id="testimonials"
+      id="googleReviews"
     >
       <h2 className="text-3xl font-bold mb-6">
         Lo Que Dicen Nuestros Clientes
@@ -57,24 +55,35 @@ export const TestimonialsSection = () => {
         opts={{ loop: true }}
       >
         <CarouselContent className="-ml-1">
-          {testimonials.map((t, index) => (
+          {googleReviews.map((t, index) => (
             <CarouselItem
               key={index}
               className="pl-1 md:basis-1/2 lg:basis-1/3"
             >
-              <div className="p-2 h-full">
-                <Card className="h-full">
-                  <CardContent className="p-6 flex items-center gap-4 text-left">
+              <div className="p-2 h-full max-sm:p-0">
+                <Card className="h-full justify-center relative">
+                  <CardContent className="p-6 flex items-center gap-4 text-left max-sm:flex-col">
                     <img
                       src={t.img}
                       alt={t.name}
                       className="w-16 h-16 rounded-full object-cover flex-shrink-0"
                     />
-                    <div>
+                    <div className="flex flex-col h-full">
                       <p className="text-gray-700 italic mb-2">"{t.comment}"</p>
-                      <p className="font-semibold text-sm text-gray-800">
-                        — {t.name}
-                      </p>
+                      <div className="flex flex-col gap-2">
+                        <p className="font-semibold text-sm text-gray-800">
+                          — {t.name}
+                        </p>
+                      </div>
+                      <a
+                        href={t.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex items-center gap-1 text-sm text-gray-600 hover:text-gray-900 transition-colors absolute bottom-3 w-max right-4"
+                      >
+                        Ver Review
+                        <ExternalLink className="size-4" />
+                      </a>
                     </div>
                   </CardContent>
                 </Card>
