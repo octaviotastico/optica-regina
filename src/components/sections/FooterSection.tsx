@@ -1,3 +1,4 @@
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
@@ -39,22 +40,40 @@ const item = {
   show: { opacity: 1, y: 0, transition: { duration: 0.25 } },
 };
 
-const LinkItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
+// Make LinkItem usable as <a> or as a button trigger
+const baseLinkClasses =
+  "group inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors";
+const underlineSpan =
+  "bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-300 bg-gradient-to-r from-brand/70 to-brand/70";
+
+const LinkItem = ({
+  href,
+  onClick,
+  children,
+}: {
+  href?: string;
+  onClick?: React.MouseEventHandler;
+  children: React.ReactNode;
+}) => (
   <li className="leading-normal">
-    <a
-      href={href}
-      className="group inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors"
-    >
-      <span className="bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-300 bg-gradient-to-r from-brand/70 to-brand/70">
-        {children}
-      </span>
-      <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
-    </a>
+    {href ? (
+      <a href={href} className={baseLinkClasses}>
+        <span className={underlineSpan}>{children}</span>
+        <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
+      </a>
+    ) : (
+      <button type="button" onClick={onClick} className={baseLinkClasses}>
+        <span className={underlineSpan}>{children}</span>
+        <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
+      </button>
+    )}
   </li>
 );
 
 export default function FooterSection() {
   const [openReturns, setOpenReturns] = useState(false);
+  const [openVirtual, setOpenVirtual] = useState(false);
+  const [openDirections, setOpenDirections] = useState(false);
 
   return (
     <footer className="relative border-t border-gray-100 max-w-screen">
@@ -157,8 +176,8 @@ export default function FooterSection() {
               Ayuda
             </h4>
             <ul className="mt-4 text-sm space-y-3">
-              <LinkItem>Prueba Virtual</LinkItem>
-              <LinkItem>Cómo Llegar</LinkItem>
+              <LinkItem onClick={() => setOpenVirtual(true)}>Prueba Virtual</LinkItem>
+              <LinkItem onClick={() => setOpenDirections(true)}>Cómo Llegar</LinkItem>
             </ul>
           </motion.div>
 
@@ -240,8 +259,8 @@ export default function FooterSection() {
         <div className="max-w-7xl mx-auto px-6 py-6 text-sm flex flex-col md:flex-row items-center justify-between gap-3 text-gray-500">
           <p className="flex flex-wrap items-center gap-1">
             <span>
-              © {new Date().getFullYear()} Óptica Regina Elena — Hecho con {" "}
-              <Heart className="size-4 text-brand -mt-0.5 inline-block" aria-label="corazón" /> {" "}
+              © {new Date().getFullYear()} Óptica Regina Elena — Hecho con{" "}
+              <Heart className="size-4 text-brand -mt-0.5 inline-block" aria-label="corazón" />{" "}
               en Córdoba
             </span>
           </p>
@@ -259,7 +278,7 @@ export default function FooterSection() {
         </div>
       </div>
 
-      {/* Modal for "Cambios y Devoluciones" */}
+      {/* Modal: Cambios y Devoluciones (ya lo tenías) */}
       <Dialog open={openReturns} onOpenChange={setOpenReturns}>
         <DialogContent className="sm:max-w-lg p-0 overflow-hidden">
           <div className="flex max-h-[90svh] sm:max-h-[80vh] flex-col">
@@ -328,7 +347,138 @@ export default function FooterSection() {
             </div>
           </div>
         </DialogContent>
+      </Dialog>
 
+      {/* Modal: Prueba Virtual */}
+      <Dialog open={openVirtual} onOpenChange={setOpenVirtual}>
+        <DialogContent className="sm:max-w-lg p-0 overflow-hidden">
+          <div className="flex max-h-[90svh] sm:max-h-[80vh] flex-col">
+            {/* Header */}
+            <div className="px-6 pb-4 pt-6 sticky top-0 bg-white z-10 border-b">
+              <DialogHeader>
+                <DialogTitle>¿Cómo aprovechar la Prueba Virtual 3D?</DialogTitle>
+                <DialogDescription>
+                  Consejos rápidos para que el modelo te quede perfecto 👓
+                </DialogDescription>
+              </DialogHeader>
+            </div>
+
+            {/* Body */}
+            <div className="px-6 py-4 overflow-y-auto">
+              <div className="prose prose-sm max-w-none text-gray-700 space-y-4">
+                <p>
+                  Nuestra vista 3D te permite girar, acercar y chequear <em>materiales, forma y volumen real</em> de cada armazón.
+                  Próximamente vas a poder alternar entre varios modelos.
+                </p>
+
+                <h4 className="text-base font-semibold mt-4">Guía exprés</h4>
+                <ol className="list-decimal pl-5 space-y-2">
+                  <li>Abrí la sección <strong>“Explorá en 3D”</strong>.</li>
+                  <li>Usá el mouse o el dedo para <em>rotar</em>; con scroll hacé <em>zoom</em>.</li>
+                  <li>Chequeá puente, varillas y altura del lente.</li>
+                  <li>¿Dudas? Escribinos y te asesoramos.</li>
+                </ol>
+
+                <div className="rounded-xl border border-gray-200 p-3 text-xs text-gray-600 bg-gray-50">
+                  <strong>Compatibilidad:</strong> funciona en celu y compu modernos.
+                  Si el 3D se ve lento, cerrá pestañas o probá en otro navegador.
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 py-4 border-t sticky bottom-0 bg-white z-10">
+              <DialogFooter className="w-full">
+                <Button variant="outline" onClick={() => setOpenVirtual(false)}>
+                  Cerrar
+                </Button>
+                <Button
+                  className="bg-brand hover:!bg-[#dd3a45]"
+                  asChild
+                  onClick={() => setOpenVirtual(false)}
+                >
+                  <a href="#try-in-3d">Abrir Prueba Virtual</a>
+                </Button>
+              </DialogFooter>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
+
+      {/* Modal: Cómo Llegar */}
+      <Dialog open={openDirections} onOpenChange={setOpenDirections}>
+        <DialogContent className="sm:max-w-lg p-0 overflow-hidden">
+          <div className="flex max-h-[90svh] sm:max-h-[80vh] flex-col">
+            {/* Header */}
+            <div className="px-6 pb-4 pt-6 sticky top-0 bg-white z-10 border-b">
+              <DialogHeader>
+                <DialogTitle>Cómo llegar a nuestra óptica</DialogTitle>
+                <DialogDescription>
+                  Tips de traslado, estacionamiento y mejores horarios.
+                </DialogDescription>
+              </DialogHeader>
+            </div>
+
+            {/* Body */}
+            <div className="px-6 py-4 overflow-y-auto">
+              <div className="prose prose-sm max-w-none text-gray-700 space-y-4">
+                <p className="m-0">
+                  Estamos en <strong>Roma 535, Córdoba Capital</strong>. A un par de cuadras de arterias principales y puntos de referencia.
+                </p>
+
+                <h4 className="text-base font-semibold">Opciones para llegar</h4>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>
+                    <strong>Auto:</strong> hay cocheras privadas a pocas cuadras y espacios de estacionamiento con parquímetro.
+                  </li>
+                  <li>
+                    <strong>Colectivo:</strong> varias líneas te dejan a 3–6 min a pie (según tu punto de partida).
+                  </li>
+                  <li>
+                    <strong>Bici/Mono:</strong> contamos con lugar para enganchar la bici dentro del local.
+                  </li>
+                  <li>
+                    <strong>Accesibilidad:</strong> ingreso a nivel de calle, sin escalones. Si necesitás asistencia, avisanos y salimos a ayudarte.
+                  </li>
+                </ul>
+
+                <h4 className="text-base font-semibold">Cuándo venir</h4>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li><strong>Menos fila:</strong> mañanas entre 9:30 y 11:30.</li>
+                  <li><strong>Asesoramiento tranquilo:</strong> medias tardes de 15:30 a 17:30.</li>
+                  <li><strong>Sábado:</strong> abrimos hasta 12:30 — ideal si venís a retirar.</li>
+                </ul>
+
+                <div className="rounded-xl border border-gray-200 p-3 text-xs text-gray-600 bg-gray-50">
+                  <p className="m-0">
+                    Si venís por <em>armazones recetados</em>, traé tu orden o tu receta anterior. Para <em>sol</em>, te ayudamos a elegir color y filtro según uso.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Footer */}
+            <div className="px-6 py-4 border-t sticky bottom-0 bg-white z-10">
+              <DialogFooter className="w-full">
+                <Button variant="outline" onClick={() => setOpenDirections(false)}>
+                  Cerrar
+                </Button>
+                <Button className="bg-brand hover:!bg-[#dd3a45]" asChild onClick={() => setOpenDirections(false)}>
+                  <a
+                    href="https://maps.app.goo.gl/77pvfKjY66RAJ91H9"
+                    target="_blank"
+                    rel="noreferrer"
+                  >
+                    Abrir en Google Maps
+                  </a>
+                </Button>
+                <Button variant="outline" asChild onClick={() => setOpenDirections(false)}>
+                  <a href="#visit-us">Ver horarios y mapa</a>
+                </Button>
+              </DialogFooter>
+            </div>
+          </div>
+        </DialogContent>
       </Dialog>
     </footer>
   );
