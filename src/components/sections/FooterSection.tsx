@@ -1,6 +1,5 @@
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription, DialogFooter } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -9,9 +8,9 @@ import {
   Instagram,
   Mail,
   MapPin,
-  MessageCircle,
   Phone
 } from "lucide-react";
+import { useState } from "react";
 
 const Logo = () => (
   <div className="flex items-center gap-3">
@@ -130,7 +129,7 @@ export default function FooterSection() {
                 aria-label="WhatsApp"
                 className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
               >
-                <MessageCircle className="size-5" />
+                <img src="/wsp.png" alt="WhatsApp" className="size-5" />
               </a>
             </div>
           </motion.div>
