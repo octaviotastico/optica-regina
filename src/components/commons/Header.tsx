@@ -103,8 +103,8 @@ export const Header = () => {
               Nosotros
             </a>
             <a
-              href="#testimonials"
-              onClick={(e) => onLink(e, "testimonials")}
+              href="#reviews"
+              onClick={(e) => onLink(e, "reviews")}
               className="hover:text-brand transition-colors cursor-pointer"
             >
               Testimonios
@@ -211,8 +211,8 @@ export const Header = () => {
                   Nosotros
                 </a>
                 <a
-                  href="#testimonials"
-                  onClick={(e) => onLink(e, "testimonials")}
+                  href="#reviews"
+                  onClick={(e) => onLink(e, "reviews")}
                   className="py-2 hover:text-brand"
                 >
                   Testimonios
