@@ -65,10 +65,10 @@ export function OpeningHours() {
         <span className="font-semibold">{todayHours}</span>
       </p>
 
-      <Separator className="mt-3 mb-5" />
+      <Separator className="my-3" />
 
       {isOpenNow ? (
-        <div className="flex items-center gap-2 mt-2 text-green-700 font-semibold">
+        <div className="flex items-center gap-2 my-2 text-green-700 font-semibold">
           <CheckCircle className="w-6 h-6" />
           ¡Estamos abiertos ahora! Vení a visitarnos 😊
         </div>
