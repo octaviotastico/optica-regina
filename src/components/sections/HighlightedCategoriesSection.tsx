@@ -27,7 +27,7 @@ const HighlightedCategoriesSection = () => {
       <p className="text-center">
         Elige una categoría para explorar nuestros productos destacados.
       </p>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 mt-8">
+      <div className="flex flex-wrap justify-center gap-6 mt-8 xl:px-20">
         {products.map((p) => (
           <ProductCard key={p.name} {...p} />
         ))}
