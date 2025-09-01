@@ -2,7 +2,7 @@ import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { motion } from "framer-motion";
 import {
-  ArrowRight,
+  ChevronRight,
   Facebook,
   Heart,
   Instagram,
@@ -40,7 +40,7 @@ const item = {
 };
 
 const LinkItem = ({ href, children }: { href: string; children: React.ReactNode }) => (
-  <li className="leading-8">
+  <li className="leading-normal">
     <a
       href={href}
       className="group inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors"
@@ -48,7 +48,7 @@ const LinkItem = ({ href, children }: { href: string; children: React.ReactNode 
       <span className="bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-300 bg-gradient-to-r from-brand/70 to-brand/70">
         {children}
       </span>
-      <ArrowRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
+      <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
     </a>
   </li>
 );
@@ -91,7 +91,7 @@ export default function FooterSection() {
         viewport={{ once: true, amount: 0.2 }}
         className="max-w-7xl mx-auto px-6 py-14"
       >
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-20">
           {/* Brand + blurb */}
           <motion.div variants={item} className="lg:col-span-2">
             <Logo />
@@ -139,7 +139,7 @@ export default function FooterSection() {
             <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Explorar
             </h4>
-            <ul className="mt-4 text-sm">
+            <ul className="mt-4 text-sm space-y-3">
               <LinkItem href="#inicio">Inicio</LinkItem>
               <LinkItem href="#categories">Categorías</LinkItem>
               <LinkItem href="#about-us">¿Quiénes Somos?</LinkItem>
@@ -153,7 +153,7 @@ export default function FooterSection() {
             <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Ayuda
             </h4>
-            <ul className="mt-4 text-sm">
+            <ul className="mt-4 text-sm space-y-3">
               <LinkItem href="#try-3d">Prueba Virtual</LinkItem>
               <LinkItem href="#visit-us">Cómo Llegar</LinkItem>
               <LinkItem href="#faq">Preguntas Frecuentes</LinkItem>
@@ -162,7 +162,7 @@ export default function FooterSection() {
           </motion.div>
 
           {/* Contacto & Horarios */}
-          <motion.div variants={item} className="max-sm:text-center">
+          <motion.div variants={item} className="max-sm:text-center lg:col-span-2">
             <h4 className="text-sm font-semibold tracking-wider text-gray-900 uppercase max-sm:-ml-4">
               Contacto
             </h4>
