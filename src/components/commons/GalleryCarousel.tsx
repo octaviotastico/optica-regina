@@ -25,7 +25,7 @@ export const GalleryCarousel = ({ posts, ariaLabel }: { posts: { thumb: string; 
       {/* Botones */}
       <button
         onClick={() => scroll("left")}
-        className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur border border-gray-200 shadow rounded-full p-2 sm:p-2.5 hover:bg-white active:scale-95"
+        className="absolute left-1 sm:left-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur border border-gray-200 shadow rounded-full p-2 sm:p-2.5 hover:bg-white active:scale-95 cursor-pointer"
         aria-label="Anterior"
         type="button"
       >
@@ -34,7 +34,7 @@ export const GalleryCarousel = ({ posts, ariaLabel }: { posts: { thumb: string; 
 
       <button
         onClick={() => scroll("right")}
-        className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur border border-gray-200 shadow rounded-full p-2 sm:p-2.5 hover:bg-white active:scale-95"
+        className="absolute right-1 sm:right-2 top-1/2 -translate-y-1/2 z-10 bg-white/90 backdrop-blur border border-gray-200 shadow rounded-full p-2 sm:p-2.5 hover:bg-white active:scale-95 cursor-pointer"
         aria-label="Siguiente"
         type="button"
       >
