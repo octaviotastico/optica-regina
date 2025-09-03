@@ -8,6 +8,7 @@ import TestimonialsSection from "./components/sections/TestimonialsSection";
 import TryIn3DSection from "./components/sections/TryIn3DSection";
 import VisitUsSection from "./components/sections/VisitUsSection";
 import WhyChooseUs from "./components/sections/WhyChooseUs";
+import FloatingWhatsApp from "./components/commons/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -24,6 +25,7 @@ export default function Home() {
         <VisitUsSection />
       </main>
       <FooterSection />
+      <FloatingWhatsApp />
     </>
   );
 }
