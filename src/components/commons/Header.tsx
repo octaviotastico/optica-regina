@@ -53,7 +53,7 @@ export const Header = () => {
       const totalPad = padLeft + padRight;
       const logoW = logoRef.current.offsetWidth;
       const gapPx = 16; // gap-4 = 1rem = 16px
-      const threshold = 32; // Minimum gap threshold in px (adjust as needed)
+      const threshold = 64; // Minimum gap threshold in px
       const totalItems = allNavItems.length;
 
       let maxK = 0;
