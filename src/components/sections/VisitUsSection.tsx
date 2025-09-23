@@ -52,11 +52,11 @@ export function OpeningHours() {
         <span className="font-semibold">{todayHours}</span>
       </p>
 
-      <Separator className="mt-3 mb-4" />
+      <Separator className="my-3" />
 
       {isOpenNow ? (
-        <div className="flex items-center gap-2 mt-1 text-green-700 font-semibold text-sm sm:text-base">
-          <CheckCircle className="w-5 h-5 sm:w-6 sm:h-6" />
+        <div className="flex items-center gap-2 my-2 text-green-700 font-semibold">
+          <CheckCircle className="w-6 h-6" />
           ¡Estamos abiertos ahora! Vení a visitarnos 😊
         </div>
       ) : (
@@ -74,9 +74,7 @@ export function OpeningHours() {
         {Object.entries(openingHours).map(([day, hours]) => (
           <div
             key={day}
-            className={`flex items-center justify-between gap-3 text-sm sm:text-base ${
-              day === today ? "font-semibold text-green-700" : ""
-            }`}
+            className={`flex justify-between text-center gap-2 items-center ${day === today ? "font-semibold text-green-700" : ""}`}
           >
             <span className="capitalize">{day}</span>
             <span className="text-right">{hours}</span>

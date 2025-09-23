@@ -1,93 +1,28 @@
-import { handleScrollClick } from "@/utils/scroll";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import { handleScrollClick } from "@/utils/scroll";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
-  const [itemWidths, setItemWidths] = useState<number[]>([]);
-  const [moreButtonWidth, setMoreButtonWidth] = useState(0);
-  const [visibleCount, setVisibleCount] = useState(0);
+  const [screenSize, setScreenSize] = useState<'sm' | 'md' | 'lg' | 'xl'>('xl');
 
-  const headerRef = useRef<HTMLHeadElement>(null);
-  const logoRef = useRef<HTMLAnchorElement>(null);
-  const measurementRef = useRef<HTMLDivElement>(null);
-
-  const allNavItems = [
-    { href: "#inicio", label: "Inicio", id: "inicio" },
-    { href: "#categories", label: "Categorías", id: "categories" },
-    { href: "#about-us", label: "Nosotros", id: "about-us" },
-    { href: "#reviews", label: "Testimonios", id: "reviews" },
-    { href: "#follow-us", label: "Síguenos", id: "follow-us" },
-    { href: "#why-choose-us", label: "Por qué elegirnos", id: "why-choose-us" },
-    { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
-    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" }
-  ];
-
-  const visibleItems = allNavItems.slice(0, visibleCount);
-  const dropdownItems = allNavItems.slice(visibleCount);
-  const hasDropdownItems = dropdownItems.length > 0;
-
-  // Measure item widths
+  // Screen size detection
   useEffect(() => {
-    if (measurementRef.current) {
-      const children = Array.from(measurementRef.current.children);
-      const widths = children.slice(0, allNavItems.length).map((child) => (child as HTMLElement).offsetWidth);
-      const moreWidth = children[allNavItems.length] ? (children[allNavItems.length] as HTMLElement).offsetWidth : 0;
-      setItemWidths(widths);
-      setMoreButtonWidth(moreWidth);
-    }
-  }, [allNavItems.length]);
-
-  // Calculate visible count
-  useEffect(() => {
-    const calculateVisible = () => {
-      if (!headerRef.current || !logoRef.current || !itemWidths.length) return;
-
-      const headerW = headerRef.current.offsetWidth;
-      const styles = getComputedStyle(headerRef.current);
-      const padLeft = parseFloat(styles.paddingLeft);
-      const padRight = parseFloat(styles.paddingRight);
-      const totalPad = padLeft + padRight;
-      const logoW = logoRef.current.offsetWidth;
-      const gapPx = 16; // gap-4 = 1rem = 16px
-      const threshold = 64; // Minimum gap threshold in px
-      const totalItems = allNavItems.length;
-
-      let maxK = 0;
-      for (let k = 1; k <= totalItems; k++) {
-        let navW = itemWidths.slice(0, k).reduce((a, b) => a + b, 0);
-        const hasDrop = k < totalItems;
-        const numElements = k + (hasDrop ? 1 : 0);
-        const numGaps = numElements - 1;
-        navW += numGaps * gapPx;
-        if (hasDrop) {
-          navW += moreButtonWidth;
-        }
-        const calcGap = headerW - totalPad - logoW - navW;
-        if (calcGap >= threshold) {
-          maxK = k;
-        } else {
-          break;
-        }
-      }
-      // Check for k=0 if all items hidden
-      if (maxK === 0 && totalItems > 0) {
-        const navW = moreButtonWidth;
-        const calcGap = headerW - totalPad - logoW - navW;
-        if (calcGap >= threshold) {
-          maxK = 0;
-        }
-      }
-      setVisibleCount(maxK);
+    const updateScreenSize = () => {
+      const width = window.innerWidth;
+      if (width < 768) setScreenSize('sm');
+      else if (width < 1024) setScreenSize('md');
+      else if (width < 1280) setScreenSize('lg');
+      else setScreenSize('xl');
     };
 
-    calculateVisible();
-    window.addEventListener("resize", calculateVisible);
-    return () => window.removeEventListener("resize", calculateVisible);
-  }, [allNavItems.length, itemWidths, moreButtonWidth, scrolled]);
+    updateScreenSize();
+    window.addEventListener('resize', updateScreenSize);
+    return () => window.removeEventListener('resize', updateScreenSize);
+  }, []);
 
   // Header scroll effect
   useEffect(() => {
@@ -136,13 +71,55 @@ export const Header = () => {
     setDropdownOpen(false);
   };
 
+  // Define nav items by breakpoint
+  const mdNavItems = [
+    { href: "#inicio", label: "Inicio", id: "inicio" },
+    { href: "#categories", label: "Categorías", id: "categories" },
+    { href: "#about-us", label: "Nosotros", id: "about-us" },
+    { href: "#reviews", label: "Testimonios", id: "reviews" },
+  ];
 
+  const lgNavItems = [
+    { href: "#follow-us", label: "Síguenos", id: "follow-us" },
+    { href: "#why-choose-us", label: "Por qué elegirnos", id: "why-choose-us" },
+  ];
+
+  const xlNavItems = [
+    { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
+    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" }
+  ];
+
+  const allNavItems = [...mdNavItems, ...lgNavItems, ...xlNavItems];
+
+  // Get visible items based on screen size
+  const getVisibleItems = () => {
+    switch (screenSize) {
+      case 'md':
+        return mdNavItems;
+      case 'lg':
+        return [...mdNavItems, ...lgNavItems];
+      case 'xl':
+        return allNavItems;
+      default:
+        return [];
+    }
+  };
+
+  // Get dropdown items (items not visible in main nav)
+  const getDropdownItems = () => {
+    const visibleItems = getVisibleItems();
+    const visibleIds = visibleItems.map(item => item.id);
+    return allNavItems.filter(item => !visibleIds.includes(item.id));
+  };
+
+  const visibleNavItems = getVisibleItems();
+  const dropdownItems = getDropdownItems();
+  const hasDropdownItems = dropdownItems.length > 0;
 
   return (
     <>
       <AnimatePresence>
         <motion.header
-          ref={headerRef}
           initial={false}
           animate={scrolled ? "scrolled" : "top"}
           variants={{
@@ -175,7 +152,6 @@ export const Header = () => {
         >
           {/* Logo */}
           <a
-            ref={logoRef}
             href="#inicio"
             onClick={(e) => onLink(e, "inicio")}
             className="text-2xl font-bold text-brand tracking-tight cursor-pointer flex-shrink-0"
@@ -186,7 +162,7 @@ export const Header = () => {
           {/* Dynamic Desktop Navigation */}
           <nav className="hidden md:flex items-center gap-4 text-sm font-medium">
             <AnimatePresence mode="popLayout">
-              {visibleItems.map((item) => (
+              {visibleNavItems.map((item) => (
                 <motion.a
                   key={item.id}
                   href={item.href}
@@ -204,6 +180,10 @@ export const Header = () => {
                   {item.label}
                 </motion.a>
               ))}
+            </AnimatePresence>
+
+            {/* Dynamic More dropdown - only show if there are hidden items */}
+            <AnimatePresence>
               {hasDropdownItems && (
                 <motion.div
                   className="relative"
@@ -238,15 +218,7 @@ export const Header = () => {
                         animate={{ opacity: 1, y: 0, scale: 1 }}
                         exit={{ opacity: 0, y: -10, scale: 0.95 }}
                         transition={{ duration: 0.15 }}
-                        className="absolute -right-6 top-full mt-6 w-48 rounded-xl shadow-xl border z-[80]"
-                        style={{
-                          // make it match the scrolled header
-                          background: scrolled ? "rgba(255, 255, 255, 0.80)" : "#ffffffAA",
-                          backdropFilter: scrolled ? "blur(24px)" : undefined,
-                          WebkitBackdropFilter: scrolled ? "blur(24px)" : undefined,
-                          boxShadow: "0 4px 20px rgba(0,0,0,0.1)",
-                          borderColor: "rgba(0,0,0,0.06)",
-                        }}
+                        className="absolute right-0 top-full mt-2 w-48 bg-white/95 backdrop-blur-md rounded-xl shadow-xl border border-gray-100 py-2 z-[80]"
                       >
                         <AnimatePresence mode="popLayout">
                           {dropdownItems.map((item, index) => (
@@ -254,7 +226,7 @@ export const Header = () => {
                               key={item.id}
                               href={item.href}
                               onClick={(e) => onLink(e, item.id)}
-                              className="block px-4 py-2 text-sm hover:bg-red-200 rounded-lg m-1 hover:text-brand transition-colors cursor-pointer"
+                              className="block px-4 py-2 text-sm hover:bg-gray-50 hover:text-brand transition-colors cursor-pointer"
                               initial={{ opacity: 0, x: -10 }}
                               animate={{ opacity: 1, x: 0 }}
                               exit={{ opacity: 0, x: -10 }}
@@ -299,7 +271,7 @@ export const Header = () => {
             {/* Overlay */}
             <motion.div
               key="overlay"
-              className="fixed inset-0 z-[60]"
+              className="fixed inset-0 z-[60] bg-black/10"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -352,35 +324,6 @@ export const Header = () => {
           </>
         )}
       </AnimatePresence>
-
-      {/* Measurement container for widths */}
-      <div
-        ref={measurementRef}
-        style={{
-          position: "fixed",
-          top: 0,
-          left: 0,
-          width: 0,
-          height: 0,
-          overflow: "hidden",
-          visibility: "hidden",
-          whiteSpace: "nowrap",
-        }}
-        aria-hidden="true"
-      >
-        {allNavItems.map((item, i) => (
-          <a
-            key={i}
-            className="text-sm font-medium hover:text-brand transition-colors cursor-pointer whitespace-nowrap"
-          >
-            {item.label}
-          </a>
-        ))}
-        <button className="flex items-center gap-1 text-sm font-medium hover:text-brand transition-colors cursor-pointer whitespace-nowrap">
-          Más
-          <ChevronDown size={14} />
-        </button>
-      </div>
     </>
   );
 };

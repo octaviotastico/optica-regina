@@ -21,23 +21,10 @@ function ViewerSkeleton() {
 }
 
 export const GlassesViewer = () => (
-  <div
-    aria-label="Visor 3D de gafas"
-    className="
-      relative w-full
-      rounded-2xl shadow-inner
-      bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300
-      overflow-hidden
-      aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]
-    "
-  >
-    <Canvas
-      camera={{ position: [-7, 3, 12], fov: 60 }}
-      dpr={[1, 2]} // más nítido en pantallas densas sin matar performance
-      gl={{ antialias: true }}
-    >
-      <ambientLight intensity={0.6} />
-      <directionalLight position={[5, 5, 5]} intensity={0.9} />
+  <div className="w-full h-full bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 rounded-2xl shadow-inner cursor-grab max-sm:max-h-96 max-sm:min-h-0">
+    <Canvas camera={{ position: [-7, 3, 12], fov: 60 }} className="max-sm:max-h-96 max-sm:min-h-0">
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[5, 5, 5]} />
       <Suspense fallback={null}>
         <GlassesModel />
         <Environment preset="city" />
@@ -60,29 +47,22 @@ export const GlassesViewer = () => (
 );
 
 const TryIn3DSection = () => (
-  <section id="try-in-3d" className="bg-white">
-    <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16 text-center">
-      <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight mb-3">
-        Explorá nuestro catálogo en 3D
-      </h2>
-      <p className="text-gray-600 text-sm sm:text-base mb-8 max-w-2xl mx-auto">
-        Girá, acercá y descubrí cada detalle de nuestras gafas con esta experiencia interactiva.
-      </p>
-
-      {/* Layout responsive: 1 col (mobile) → 12 cols (lg) */}
-      <div className="mx-auto grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start text-left">
-        {/* Visor 3D */}
-        <div className="lg:col-span-7">
-          <GlassesViewer />
-        </div>
-
-        {/* Ficha del producto */}
-        <Card className="lg:col-span-5 bg-gradient-to-br from-white to-gray-50">
-          <CardContent className="p-5 sm:p-6 lg:p-7 space-y-4">
-            <div className="flex flex-wrap items-center gap-2">
-              <Badge variant="outline" className="text-xs sm:text-sm">Nuevo</Badge>
-              <h3 className="text-xl sm:text-2xl font-semibold">Ray-Ban RB7046</h3>
-            </div>
+  <section className="p-8 md:px-40 bg-white text-center" id="try-in-3d">
+    <h2 className="text-3xl font-bold mb-4">Explorá nuestro catálogo en 3D</h2>
+    <p className="text-gray-600 mb-6">
+      Girá, acercá y descubrí cada detalle de nuestras gafas con esta
+      experiencia interactiva.
+    </p>
+    <div className="mx-auto flex flex-col lg:flex-row gap-8 items-stretch text-left">
+      <div className="flex-3 min-h-[500px] md:min-h-0 max-sm:max-h-96 max-sm:min-h-0">
+        <GlassesViewer />
+      </div>
+      <Card className="flex-2 p-0 bg-gradient-to-br from-[#FFFFFF] to-gray-50">
+        <CardContent className="p-6 space-y-4 h-full flex flex-col">
+          <div className="flex items-center gap-2">
+            <Badge variant="outline">Nuevo</Badge>
+            <h3 className="text-2xl font-semibold">Ray-Ban RB7046</h3>
+          </div>
 
             <Separator />
 

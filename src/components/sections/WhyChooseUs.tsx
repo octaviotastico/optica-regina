@@ -1,4 +1,4 @@
-import { motion, useReducedMotion } from "framer-motion";
+import { motion } from "framer-motion";
 import { BadgeCheck, Eye, Shield, Sparkles } from "lucide-react";
 
 const features = [
@@ -28,72 +28,42 @@ const features = [
   },
 ];
 
-const WhyChooseUs = () => {
-  const reduceMotion = useReducedMotion();
-
-  return (
-    <motion.section
-      id="features"
-      className="bg-white"
-      initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
+const WhyChooseUs = () => (
+  <motion.section
+    id="why-choose-us"
+    className="p-8 md:px-20 bg-gray-100"
+    initial={{ opacity: 0, y: 40 }}
+    whileInView={{ opacity: 1, y: 0 }}
+    viewport={{ once: true, amount: 0.2 }}
+    transition={{ duration: 0.5 }}
+  >
+    <motion.h2
+      className="text-3xl font-bold text-center mb-8"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
+      viewport={{ once: true, amount: 0.6 }}
       transition={{ duration: 0.5 }}
     >
-      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12 md:py-16">
-        <motion.h2
-          className="text-2xl sm:text-3xl lg:text-4xl font-bold text-center tracking-tight mb-6 sm:mb-8"
-          initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.6 }}
-          transition={{ duration: 0.5 }}
-        >
-          ¿Por qué Elegirnos?
-        </motion.h2>
+      ¿Por qué Elegirnos?
+    </motion.h2>
 
-        <div
-          className="
-            grid gap-4 sm:gap-6 lg:gap-8
-            grid-cols-1 sm:grid-cols-2 lg:grid-cols-4
-          "
-          role="list"
-          aria-label="Características destacadas"
+    <div className="flex flex-wrap justify-center gap-8">
+      {features.map(({ icon: Icon, title, description }, index) => (
+        <motion.div
+          key={title}
+          className="p-4 rounded-2xl bg-white backdrop-blur-md border border-white shadow-md flex flex-col items-center text-center hover:shadow-xl transition-all duration-300 hover:scale-[103%] cursor-pointer select-none sm:py-10 w-full sm:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] sm:min-w-[280px]"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: index * 0.1, duration: 0.4 }}
         >
-          {features.map(({ icon: Icon, title, description }, index) => (
-            <motion.div
-              key={title}
-              role="listitem"
-              className="
-                h-full
-                rounded-2xl border border-gray-100
-                bg-white/70 backdrop-blur
-                shadow-sm
-                p-4 sm:p-6
-                text-center
-                flex flex-col items-center
-                transition
-                md:hover:shadow-md md:hover:scale-[1.02]
-                focus-within:ring-2 focus-within:ring-brand/40
-              "
-              initial={reduceMotion ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: reduceMotion ? 0 : index * 0.08, duration: 0.35 }}
-              tabIndex={0}
-            >
-              <Icon className="mb-3 sm:mb-4 h-8 w-8 sm:h-10 sm:w-10 text-brand" />
-              <h3 className="text-lg sm:text-xl font-semibold mb-1.5 sm:mb-2">
-                {title}
-              </h3>
-              <p className="text-gray-600 text-sm sm:text-base leading-relaxed max-w-prose">
-                {description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
-      </div>
-    </motion.section>
-  );
-};
+          <Icon className="w-10 h-10 text-brand mb-4" />
+          <h3 className="text-xl font-semibold mb-2">{title}</h3>
+          <p className="text-gray-600 text-sm">{description}</p>
+        </motion.div>
+      ))}
+    </div>
+  </motion.section>
+);
 
 export default WhyChooseUs;

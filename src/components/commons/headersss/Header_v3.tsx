@@ -1,7 +1,7 @@
-import { handleScrollClick } from "@/utils/scroll";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
 import { useEffect, useRef, useState } from "react";
+import { handleScrollClick } from "@/utils/scroll";
+import { Menu, X, ChevronDown } from "lucide-react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -53,7 +53,7 @@ export const Header = () => {
       const totalPad = padLeft + padRight;
       const logoW = logoRef.current.offsetWidth;
       const gapPx = 16; // gap-4 = 1rem = 16px
-      const threshold = 64; // Minimum gap threshold in px
+      const threshold = 32; // Minimum gap threshold in px (adjust as needed)
       const totalItems = allNavItems.length;
 
       let maxK = 0;

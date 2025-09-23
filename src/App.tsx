@@ -8,22 +8,25 @@ import TestimonialsSection from "./components/sections/TestimonialsSection";
 import TryIn3DSection from "./components/sections/TryIn3DSection";
 import VisitUsSection from "./components/sections/VisitUsSection";
 import WhyChooseUs from "./components/sections/WhyChooseUs";
+import FloatingWhatsApp from "./components/commons/FloatingWhatsApp";
 
 export default function Home() {
   return (
     <>
       <Header />
-      <main className="bg-white min-h-screen pt-24" id="inicio">
+      <main className="bg-white min-h-screen pt-20 max-md:pt-22 max-w-screen" id="inicio">
         <IntroductionSection />
         <HighlightedCategoriesSection />
         <AboutUsSection />
         <TestimonialsSection />
+        <FollowUsSection />
         <WhyChooseUs />
         <TryIn3DSection />
         <VisitUsSection />
         <FollowUsSection />
       </main>
       <FooterSection />
+      <FloatingWhatsApp />
     </>
   );
 }
