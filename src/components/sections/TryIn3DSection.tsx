@@ -1,10 +1,10 @@
-import { Suspense } from "react";
-import { Canvas } from "@react-three/fiber";
-import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
-import { ChevronRight, BadgeCheck } from "lucide-react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
+import { Canvas } from "@react-three/fiber";
+import { BadgeCheck, ChevronRight } from "lucide-react";
+import { Suspense } from "react";
 import { Separator } from "../ui/separator";
 
 export function GlassesModel() {
@@ -101,7 +101,6 @@ const TryIn3DSection = () => (
           </CardContent>
         </Card>
       </div>
-    </div>
   </section>
 );
 
