@@ -40,7 +40,7 @@ export const FollowUsSection = () => {
             Seguinos en Redes
           </h2>
           <p className="text-gray-600 mt-2 text-sm sm:text-base">
-            Novedades, estilos y tips de cuidado visual. Minimal y sin iframes.
+            Descubrí las últimas tendencias, novedades y consejos para cuidar tu salud visual.
           </p>
         </div>
 

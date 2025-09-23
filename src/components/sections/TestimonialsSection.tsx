@@ -50,10 +50,15 @@ export const TestimonialsSection = () => {
       <h2 className="text-3xl font-bold mb-6">
         Lo Que Dicen Nuestros Clientes
       </h2>
-      <Carousel
-        className="w-full max-w-full md:w-full lg:w-3/4 mx-auto cursor-grab select-none relative"
-        opts={{ loop: true }}
-      >
+      <div className="relative">
+        <Carousel
+          className="w-full max-w-full md:w-full lg:w-3/4 mx-auto cursor-grab select-none relative"
+          opts={{ loop: true }}
+        >
+        {/* Left fade overlay */}
+        <div className="absolute left-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-r from-gray-100 to-transparent z-10 pointer-events-none max-sm:hidden" />
+        {/* Right fade overlay */}
+        <div className="absolute right-0 top-0 bottom-0 w-8 md:w-16 bg-gradient-to-l from-gray-100 to-transparent z-10 pointer-events-none max-sm:hidden" />
         <CarouselContent className="-ml-1 max-sm:ml-0">
           {googleReviews.map((t, index) => (
             <CarouselItem
@@ -91,9 +96,10 @@ export const TestimonialsSection = () => {
             </CarouselItem>
           ))}
         </CarouselContent>
-        <CarouselPrevious className="!bg-white shadow !border-gray-300 max-sm:left-0 max-sm:scale-75" />
-        <CarouselNext className="!bg-white shadow !border-gray-300 max-sm:right-0 max-sm:scale-75" />
-      </Carousel>
+          <CarouselPrevious className="!bg-white shadow !border-gray-300 max-sm:left-0 max-sm:scale-75" />
+          <CarouselNext className="!bg-white shadow !border-gray-300 max-sm:right-0 max-sm:scale-75" />
+        </Carousel>
+      </div>
     </section>
   );
 };

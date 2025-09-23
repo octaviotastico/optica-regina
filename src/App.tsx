@@ -5,10 +5,11 @@ import FooterSection from "./components/sections/FooterSection";
 import HighlightedCategoriesSection from "./components/sections/HighlightedCategoriesSection";
 import IntroductionSection from "./components/sections/Introduction";
 import TestimonialsSection from "./components/sections/TestimonialsSection";
-import TryIn3DSection from "./components/sections/TryIn3DSection";
+// import TryIn3DSection from "./components/sections/TryIn3DSection";
+import FloatingWhatsApp from "./components/commons/FloatingWhatsApp";
+import EcommerceSection from "./components/sections/EcommerceSection";
 import VisitUsSection from "./components/sections/VisitUsSection";
 import WhyChooseUs from "./components/sections/WhyChooseUs";
-import FloatingWhatsApp from "./components/commons/FloatingWhatsApp";
 
 export default function Home() {
   return (
@@ -21,9 +22,9 @@ export default function Home() {
         <TestimonialsSection />
         <FollowUsSection />
         <WhyChooseUs />
-        <TryIn3DSection />
+        {/* <TryIn3DSection /> */}
         <VisitUsSection />
-        <FollowUsSection />
+        <EcommerceSection />
       </main>
       <FooterSection />
       <FloatingWhatsApp />

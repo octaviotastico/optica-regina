@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { handleScrollClick } from "@/utils/scroll";
+import { ShoppingCart } from "lucide-react";
 
 const IntroductionSection = () => (
   <section
@@ -44,13 +44,21 @@ const IntroductionSection = () => (
         Descubrí tus Próximos Lentes Favoritos
       </h1>
       <p className="text-lg text-gray-600 mb-6 max-sm:text-black max-sm:font-semibold">
-        Probá nuestros modelos en línea con tecnología de preview 3D.
+        Explorá nuestra amplia colección online y encontrá el estilo perfecto para vos.
+        Comprá desde casa con la garantía de calidad de siempre.
       </p>
       <Button
         className="text-lg px-6 py-3 shadow cursor-pointer bg-brand hover:!bg-[#dd3a45]"
-        onClick={(e) => handleScrollClick(e, "try-in-3d")}
+        asChild
       >
-        Probar Ahora
+        <a
+          href="https://farmaciashospitalitaliano.com.ar/optica-regina-elena/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <ShoppingCart className="w-5 h-5" />
+          Comprar Ahora
+        </a>
       </Button>
     </motion.div>
 

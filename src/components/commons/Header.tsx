@@ -22,8 +22,9 @@ export const Header = () => {
     { href: "#reviews", label: "Testimonios", id: "reviews" },
     { href: "#follow-us", label: "Síguenos", id: "follow-us" },
     { href: "#why-choose-us", label: "Por qué elegirnos", id: "why-choose-us" },
-    { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
-    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" }
+    // { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
+    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" },
+    { href: "#ecommerce", label: "Ecommerce", id: "ecommerce" }
   ];
 
   const visibleItems = allNavItems.slice(0, visibleCount);

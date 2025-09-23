@@ -143,7 +143,7 @@ export default function FooterSection() {
                 <Facebook className="size-5" />
               </a>
               <a
-                href="mailto:hola@opticareginaelena.com"
+                href="mailto:opticaregina@gmail.com"
                 aria-label="Email"
                 className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
@@ -173,8 +173,9 @@ export default function FooterSection() {
               <LinkItem onClick={(e) => onLink(e, "reviews")}>Testimonios</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "follow-us")}>Síguenos</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "why-choose-us")}>¿Por qué Elegirnos?</LinkItem>
-              <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem>
+              {/* <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem> */}
               <LinkItem onClick={(e) => onLink(e, "visit-us")}>Dónde Estamos</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "ecommerce")}>Ecommerce</LinkItem>
             </ul>
           </motion.div>
 
@@ -184,7 +185,7 @@ export default function FooterSection() {
               Ayuda
             </h4>
             <ul className="mt-4 text-sm space-y-3">
-              <LinkItem onClick={() => setOpenVirtual(true)}>Prueba Virtual</LinkItem>
+              {/* <LinkItem onClick={() => setOpenVirtual(true)}>Prueba Virtual</LinkItem> */}
               <LinkItem onClick={() => setOpenDirections(true)}>Cómo Llegar</LinkItem>
             </ul>
           </motion.div>
@@ -208,10 +209,10 @@ export default function FooterSection() {
               <li className="flex items-start gap-3 min-w-0">
                 <Mail className="size-5 text-brand mt-0.5 shrink-0" />
                 <a
-                  href="mailto:hola@opticareginaelena.com"
+                  href="mailto:opticaregina@gmail.com"
                   className="hover:text-gray-900 break-all"
                 >
-                  hola@opticareginaelena.com
+                  opticaregina@gmail.com
                 </a>
               </li>
             </ul>
@@ -219,7 +220,7 @@ export default function FooterSection() {
         </div>
 
         {/* Newsletter */}
-        <motion.div
+        {/* <motion.div
           variants={item}
           className="mt-10 rounded-2xl border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
         >
@@ -259,7 +260,7 @@ export default function FooterSection() {
               Suscribirme
             </Button>
           </form>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
 
       {/* Bottom bar */}
@@ -317,8 +318,8 @@ export default function FooterSection() {
                 </ul>
                 <p>
                   Para iniciar un cambio o devolución, escribinos a{" "}
-                  <a href="mailto:hola@opticareginaelena.com" className="text-brand underline">
-                    hola@opticareginaelena.com
+                  <a href="mailto:opticaregina@gmail.com" className="text-brand underline">
+                    opticaregina@gmail.com
                   </a>{" "}
                   o por WhatsApp al{" "}
                   <a
