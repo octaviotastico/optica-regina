@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://opticareginaelena.com.ar/sitemap.xml
+
+# Block common bot paths
+Disallow: /admin/
+Disallow: /private/
+Disallow: /.env
+Disallow: /node_modules/
+Disallow: /src/
+Disallow: /dist/assets/
+
+# Allow Google to crawl CSS and JS files for better rendering
+Allow: /*.css
+Allow: /*.js
+Allow: /*.png
+Allow: /*.jpg
+Allow: /*.jpeg
+Allow: /*.webp
+Allow: /*.svg
+
+# Crawl-delay for aggressive bots
+User-agent: CCBot
+Crawl-delay: 5
+
+User-agent: GPTBot
+Crawl-delay: 5
+
+# Host directive
+Host: https://opticareginaelena.com.ar

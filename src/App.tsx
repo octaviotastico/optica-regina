@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <Header />
-      <main className="bg-white min-h-screen pt-20 max-md:pt-22 max-w-screen" id="inicio">
+      <main className="bg-white min-h-screen pt-20 max-md:pt-22 max-w-screen" id="inicio" role="main">
         <IntroductionSection />
         <HighlightedCategoriesSection />
         <AboutUsSection />

@@ -15,8 +15,10 @@ const ProductCard = ({
     <CardContent className="flex flex-col p-3 items-center gap-2">
       <img
         src={img}
-        alt={name}
+        alt={`${name} - Anteojos de Óptica Regina Elena en Córdoba - ${desc}`}
         className="w-full h-60 object-cover rounded-xl group-hover:h-64 transition-all duration-300"
+        loading="lazy"
+        decoding="async"
       />
       <h3 className="text-xl font-semibold text-center mt-2">{name}</h3>
       <p className="text-gray-500 text-sm text-center">{desc}</p>

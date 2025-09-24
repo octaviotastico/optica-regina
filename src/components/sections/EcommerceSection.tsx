@@ -40,7 +40,7 @@ const EcommerceSection = () => {
             ¡Comprá Online Desde Casa!
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-8 max-w-2xl mx-auto">
-            Visitá nuestro e-commerce oficial y descubrí la comodidad de elegir tus lentes
+            Visitá nuestra tienda online oficial y descubrí la comodidad de elegir tus lentes
             desde cualquier lugar. La misma calidad de siempre, ahora a un click de distancia.
           </p>
 
@@ -51,7 +51,7 @@ const EcommerceSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Button
-              className="text-lg px-8 py-4 bg-brand hover:!bg-[#dd3a45] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+              className="text-lg !p-6 bg-brand hover:!bg-[#dd3a45] shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
               asChild
             >
               <a
@@ -61,7 +61,7 @@ const EcommerceSection = () => {
                 className="flex items-center gap-3"
               >
                 <ShoppingCart className="w-6 h-6" />
-                Visitar E-commerce
+                Visitar tienda online
               </a>
             </Button>
           </motion.div>

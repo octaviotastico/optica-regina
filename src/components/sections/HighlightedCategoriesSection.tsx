@@ -14,19 +14,19 @@ const HighlightedCategoriesSection = () => {
     },
     {
       name: "Diseño Vintage",
-      desc: "Un toque retro con tecnología actual.",
+      desc: "Un toque retro con tecnología actual y calidad premium.",
       img: "./glasses/vintage.png",
     },
   ];
 
   return (
-    <section className="p-8 bg-gray-100 min-h-[606px]" id="categories">
-      <h2 className="text-3xl font-bold mb-6 text-center">
+    <section className="p-8 bg-gray-100 min-h-[606px]" id="categories" aria-labelledby="categories-title">
+      <h2 id="categories-title" className="text-3xl font-bold mb-6 text-center">
         Explorá Nuestro Catálogo
       </h2>
       <p className="text-center">
         Tenemos lentes para todos los estilos, ¡encontrá los tuyos! <br />
-        Descubrí diseños únicos que se adaptan a tu personalidad.
+        Descubrí diseños únicos que se adaptan a tu personalidad y necesidades visuales.
       </p>
       <div className="flex flex-wrap justify-center gap-6 mt-8 xl:px-20">
         {products.map((p) => (

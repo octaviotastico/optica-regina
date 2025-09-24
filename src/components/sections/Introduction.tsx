@@ -6,6 +6,7 @@ const IntroductionSection = () => (
   <section
     className="grid sm:grid-cols-2 gap-8 p-8 items-center max-sm:p-0 relative"
     id="introduction"
+    aria-labelledby="hero-title"
   >
     <motion.div
       className="absolute inset-0 max-sm:block hidden overflow-hidden"
@@ -40,8 +41,8 @@ const IntroductionSection = () => (
       transition={{ duration: 0.3 }}
       className="relative max-sm:p-6 max-sm:py-10"
     >
-      <h1 className="text-5xl font-bold mb-4">
-        Descubrí tus Próximos Lentes Favoritos
+      <h1 id="hero-title" className="text-5xl font-bold mb-4">
+        Descubrí tus Próximos Lentes Favoritos en Córdoba
       </h1>
       <p className="text-lg text-gray-600 mb-6 max-sm:text-black max-sm:font-semibold">
         Explorá nuestra amplia colección online y encontrá el estilo perfecto para vos.
@@ -70,8 +71,10 @@ const IntroductionSection = () => (
     >
       <img
         src="/banner-2.png"
-        alt="Modelos de gafas"
+        alt="Colección de anteojos y lentes de Óptica Regina Elena en Córdoba - Estilos modernos y clásicos disponibles"
         className="w-full max-h-[500px] object-cover"
+        loading="eager"
+        fetchPriority="high"
       />
     </motion.div>
   </section>

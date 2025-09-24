@@ -50,7 +50,6 @@ const AboutUsSection = () => {
                 "Más de 2 décadas de experiencia.",
                 "Atención profesional y cercana.",
                 "Modelos exclusivos y actuales.",
-                "Prueba virtual en 3D al instante.",
                 "Cobertura con múltiples obras sociales.",
                 "Entrega rápida y seguimiento postventa.",
               ].map((item, i) => (
@@ -107,7 +106,7 @@ const AboutUsSection = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ delay: 0.1 }}
         >
-          Tu visión, nuestro compromiso. Visitanos en Roma 535, Córdoba.
+          Tu visión, nuestro compromiso. Visitanos en Roma 535, Córdoba, a metros del Hospital Italiano.
         </motion.p>
       </div>
     </section>

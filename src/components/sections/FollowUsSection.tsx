@@ -10,15 +10,15 @@ import NetworkCard from "../commons/NetworkCard";
 
 /* ---------- DATA ---------- */
 const IG_POSTS = [
-  { thumb: "/ig_1.png", href: "https://www.instagram.com/p/DFnUmQWs9tf/", alt: "IG 1" },
-  { thumb: "/ig_2.png", href: "https://www.instagram.com/p/DJj3_Qrt2Zn/", alt: "IG 2" },
-  { thumb: "/ig_3.png", href: "https://www.instagram.com/p/DM0Q97Js_lp/", alt: "IG 3" },
+  { thumb: "/ig_1.png", href: "https://www.instagram.com/p/DFnUmQWs9tf/", alt: "Publicación de Instagram de Óptica Regina Elena - Nuevos diseños y tendencias en anteojos" },
+  { thumb: "/ig_2.png", href: "https://www.instagram.com/p/DJj3_Qrt2Zn/", alt: "Post de Instagram mostrando la colección de anteojos de Óptica Regina Elena en Córdoba" },
+  { thumb: "/ig_3.png", href: "https://www.instagram.com/p/DM0Q97Js_lp/", alt: "Contenido de Instagram sobre salud visual y consejos de Óptica Regina Elena" },
 ];
 
 const FB_POSTS = [
-  { thumb: "/fb_1.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid02yTJfjLthzzfdD7NMuvr7x2wrmwHYX49sjjWS7HxHmhfXsF9FkP6VNcPWLqkVaj7Nl", alt: "FB 1" },
-  { thumb: "/fb_2.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid02rdCaJGU8oPTe4h9jnJYQgjgXMDFdcLTo6NBkyqA3sWZGgrqjCVgXzr6kyp4RivuPl", alt: "FB 2" },
-  { thumb: "/fb_3.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid0246BVfXx15V5YovTXn7x8U5QgCSxkFqwpjK3FU3w8JJZ3WNqWvLcJz2sTbAaaQy2Yl", alt: "FB 3" },
+  { thumb: "/fb_1.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid02yTJfjLthzzfdD7NMuvr7x2wrmwHYX49sjjWS7HxHmhfXsF9FkP6VNcPWLqkVaj7Nl", alt: "Publicación de Facebook de Óptica Regina Elena - Promociones y novedades en anteojos" },
+  { thumb: "/fb_2.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid02rdCaJGU8oPTe4h9jnJYQgjgXMDFdcLTo6NBkyqA3sWZGgrqjCVgXzr6kyp4RivuPl", alt: "Post de Facebook sobre servicios de Óptica Regina Elena en Hospital Italiano Córdoba" },
+  { thumb: "/fb_3.jpg", href: "https://www.facebook.com/OpticaReginaElena/posts/pfbid0246BVfXx15V5YovTXn7x8U5QgCSxkFqwpjK3FU3w8JJZ3WNqWvLcJz2sTbAaaQy2Yl", alt: "Contenido de Facebook con testimonios de clientes de Óptica Regina Elena" },
 ];
 
 /* ---------- PAGE ---------- */
@@ -26,7 +26,7 @@ export const FollowUsSection = () => {
   const [open, setOpen] = useState(false);
 
   return (
-    <section id="follow-us" className="bg-white">
+    <section id="follow-us" className="bg-white" aria-labelledby="social-title">
       <motion.div
         initial={{ opacity: 0, y: 12 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -36,11 +36,11 @@ export const FollowUsSection = () => {
       >
         {/* Header */}
         <div className="text-center max-w-2xl mx-auto">
-          <h2 className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
-            Seguinos en Redes
+          <h2 id="social-title" className="text-2xl sm:text-3xl lg:text-4xl font-bold tracking-tight">
+            Seguinos en Redes Sociales
           </h2>
           <p className="text-gray-600 mt-2 text-sm sm:text-base">
-            Descubrí las últimas tendencias, novedades y consejos para cuidar tu salud visual.
+            Descubrí las últimas tendencias en anteojos, novedades de Óptica Regina Elena y consejos para cuidar tu salud visual en Córdoba.
           </p>
         </div>
 
@@ -63,7 +63,7 @@ export const FollowUsSection = () => {
           <NetworkCard
             title="WhatsApp"
             handle="+54 9 351 357-0864"
-            icon={<img src="/wsp.png" alt="WhatsApp" className="size-5 sm:size-6" />}
+            icon={<img src="/wsp.png" alt="Logo de WhatsApp" className="size-5 sm:size-6" loading="lazy" />}
             cta="Enviar mensaje"
             profileUrl="https://wa.me/5493513570864"
           />

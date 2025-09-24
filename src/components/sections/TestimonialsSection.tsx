@@ -46,8 +46,9 @@ export const TestimonialsSection = () => {
     <section
       className="p-8 px-4 md:px-20 bg-gray-100 text-center"
       id="reviews"
+      aria-labelledby="testimonials-title"
     >
-      <h2 className="text-3xl font-bold mb-6">
+      <h2 id="testimonials-title" className="text-3xl font-bold mb-6">
         Lo Que Dicen Nuestros Clientes
       </h2>
       <div className="relative">
@@ -70,8 +71,10 @@ export const TestimonialsSection = () => {
                   <CardContent className="p-6 flex items-center gap-4 text-left max-sm:flex-col">
                     <img
                       src={t.img}
-                      alt={t.name}
+                      alt={`Foto de perfil de ${t.name} - Cliente de Óptica Regina Elena en Córdoba`}
                       className="w-16 h-16 rounded-full object-cover flex-shrink-0"
+                      loading="lazy"
+                      decoding="async"
                     />
                     <div className="flex flex-col h-full">
                       <p className="text-gray-700 italic mb-2">"{t.comment}"</p>
