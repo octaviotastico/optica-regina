@@ -55,16 +55,17 @@ const WhyChooseUs = () => (
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <Button
-            className="text-lg px-8 py-6 bg-green-500 hover:bg-green-600 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            className="text-lg px-6 py-4 bg-brand shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-103"
             asChild
           >
             <a
               href="https://api.whatsapp.com/send?phone=5493513570864&text=¡Hola!%20Me%20interesa%20recibir%20atención%20personalizada%20para%20elegir%20mis%20lentes.%20¿Pueden%20ayudarme?"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3"
+              className="flex items-center gap-3 flex-wrap h-auto whitespace-break-spaces text-center justify-center"
+              style={{ whiteSpace: 'break-spaces' }}
             >
-              <img src="/wsp.png" alt="WhatsApp" className="w-6 h-6" />
+              <img src="/wsp.png" alt="WhatsApp" className="w-6 h-6 brightness-0 invert" />
               Recibir Asesoramiento Personalizado
             </a>
           </Button>
