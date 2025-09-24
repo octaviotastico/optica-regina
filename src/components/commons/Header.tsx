@@ -20,11 +20,11 @@ export const Header = () => {
     { href: "#categories", label: "Categorías", id: "categories" },
     { href: "#about-us", label: "Nosotros", id: "about-us" },
     { href: "#reviews", label: "Testimonios", id: "reviews" },
-    { href: "#follow-us", label: "Síguenos", id: "follow-us" },
+    { href: "#follow-us", label: "Redes Sociales", id: "follow-us" },
     { href: "#why-choose-us", label: "Por qué elegirnos", id: "why-choose-us" },
-    // { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
+    { href: "#ecommerce", label: "Tienda Online", id: "ecommerce" },
     { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" },
-    { href: "#ecommerce", label: "Ecommerce", id: "ecommerce" }
+    // { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
   ];
 
   const visibleItems = allNavItems.slice(0, visibleCount);
@@ -146,6 +146,7 @@ export const Header = () => {
           ref={headerRef}
           initial={false}
           animate={scrolled ? "scrolled" : "top"}
+          role="banner"
           variants={{
             top: {
               width: "100%",
@@ -185,7 +186,7 @@ export const Header = () => {
           </a>
 
           {/* Dynamic Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4 text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-4 text-sm font-medium" role="navigation" aria-label="Navegación principal">
             <AnimatePresence mode="popLayout">
               {visibleItems.map((item) => (
                 <motion.a
