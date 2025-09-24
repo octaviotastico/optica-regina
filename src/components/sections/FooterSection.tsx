@@ -171,11 +171,11 @@ export default function FooterSection() {
               <LinkItem onClick={(e) => onLink(e, "categories")}>Categorías</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "about-us")}>¿Quiénes Somos?</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "reviews")}>Testimonios</LinkItem>
-              <LinkItem onClick={(e) => onLink(e, "follow-us")}>Síguenos</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "follow-us")}>Redes Sociales</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "why-choose-us")}>¿Por qué Elegirnos?</LinkItem>
-              {/* <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem> */}
+              <LinkItem onClick={(e) => onLink(e, "ecommerce")}>Tienda Online</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "visit-us")}>Dónde Estamos</LinkItem>
-              <LinkItem onClick={(e) => onLink(e, "ecommerce")}>Ecommerce</LinkItem>
+              {/* <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem> */}
             </ul>
           </motion.div>
 
