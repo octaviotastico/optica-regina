@@ -5,7 +5,7 @@ const HighlightedCategoriesSection = () => {
     {
       name: "Diseño Urbano",
       desc: "Estilo moderno y versátil para el día a día.",
-      img: "./urbanas.png",
+      img: "./glasses/urban.png",
     },
     {
       name: "Diseño Minimalista",
