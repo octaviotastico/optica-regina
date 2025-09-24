@@ -40,10 +40,10 @@ const EcommerceSection = () => {
             ¡Comprá Online Desde Casa!
           </h2>
           <p className="text-gray-600 text-sm sm:text-base mb-8 max-w-2xl mx-auto">
-            Visitá nuestro e-commerce oficial y descubrí la comodidad de elegir tus lentes 
+            Visitá nuestro e-commerce oficial y descubrí la comodidad de elegir tus lentes
             desde cualquier lugar. La misma calidad de siempre, ahora a un click de distancia.
           </p>
-          
+
           <motion.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -105,8 +105,8 @@ const EcommerceSection = () => {
         >
           <p className="text-gray-500 text-sm max-w-md mx-auto">
             ¿Tenés dudas? También podés{" "}
-            <a 
-              href="#visit-us" 
+            <a
+              href="#visit-us"
               className="text-brand hover:underline font-medium"
               onClick={(e) => {
                 e.preventDefault();

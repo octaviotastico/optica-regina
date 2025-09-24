@@ -22,9 +22,9 @@ export default function Home() {
         <TestimonialsSection />
         <FollowUsSection />
         <WhyChooseUs />
+        <EcommerceSection />
         {/* <TryIn3DSection /> */}
         <VisitUsSection />
-        <EcommerceSection />
       </main>
       <FooterSection />
       <FloatingWhatsApp />
