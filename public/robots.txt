@@ -15,8 +15,8 @@ Disallow: /dist/assets/
 # Allow Google to crawl CSS and JS files for better rendering
 Allow: /*.css
 Allow: /*.js
-Allow: /*.png
-Allow: /*.jpg
+Allow: /*.avif
+Allow: /*.avif
 Allow: /*.jpeg
 Allow: /*.webp
 Allow: /*.svg

@@ -107,7 +107,7 @@ export const generateMetaTags = (pageTitle?: string, pageDescription?: string) =
       locale: 'es_AR',
       images: [
         {
-          url: `${SEO_CONSTANTS.WEBSITE}/banner-2.png`,
+          url: `${SEO_CONSTANTS.WEBSITE}/banner-2.avif`,
           width: 1200,
           height: 630,
           alt: `${SEO_CONSTANTS.SITE_NAME} - Anteojos y Lentes en ${SEO_CONSTANTS.CITY}`
@@ -118,7 +118,7 @@ export const generateMetaTags = (pageTitle?: string, pageDescription?: string) =
       card: 'summary_large_image',
       title,
       description,
-      images: [`${SEO_CONSTANTS.WEBSITE}/banner-2.png`]
+      images: [`${SEO_CONSTANTS.WEBSITE}/banner-2.avif`]
     }
   };
 };
@@ -126,24 +126,24 @@ export const generateMetaTags = (pageTitle?: string, pageDescription?: string) =
 // Performance optimization helpers
 export const imageOptimization = {
   // Critical images that should load immediately
-  critical: ['/banner-2.png', '/logo.jpg'],
+  critical: ['/banner-2.avif', '/logo.avif'],
 
   // Non-critical images that can lazy load
   lazy: [
-    '/urbanas.png',
-    '/glasses/minimalist.png',
-    '/glasses/vintage.png',
-    '/review_1.png',
-    '/review_2.png',
-    '/review_3.png',
-    '/review_4.png',
-    '/review_5.png',
-    '/ig_1.png',
-    '/ig_2.png',
-    '/ig_3.png',
-    '/fb_1.jpg',
-    '/fb_2.jpg',
-    '/fb_3.jpg',
-    '/wsp.png'
+    '/urbanas.avif',
+    '/glasses/minimalist.avif',
+    '/glasses/vintage.avif',
+    '/review_1.avif',
+    '/review_2.avif',
+    '/review_3.avif',
+    '/review_4.avif',
+    '/review_5.avif',
+    '/ig_1.avif',
+    '/ig_2.avif',
+    '/ig_3.avif',
+    '/fb_1.avif',
+    '/fb_2.avif',
+    '/fb_3.avif',
+    '/wsp.avif'
   ]
 };

@@ -5,17 +5,17 @@ const HighlightedCategoriesSection = () => {
     {
       name: "Diseño Urbano",
       desc: "Estilo moderno y versátil para el día a día.",
-      img: "./glasses/urban.png",
+      img: "./glasses/urban.avif",
     },
     {
       name: "Diseño Minimalista",
       desc: "Líneas limpias y elegantes para un look sofisticado.",
-      img: "./glasses/minimalist.png",
+      img: "./glasses/minimalist.avif",
     },
     {
       name: "Diseño Vintage",
       desc: "Un toque retro con tecnología actual y calidad premium.",
-      img: "./glasses/vintage.png",
+      img: "./glasses/vintage.avif",
     },
   ];
 

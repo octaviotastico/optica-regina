@@ -11,7 +11,7 @@ const IntroductionSection = () => (
     <motion.div
       className="absolute inset-0 max-sm:block hidden overflow-hidden"
       style={{
-        backgroundImage: "url('/banner-2.png')",
+        backgroundImage: "url('/banner-2.avif')",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat"
       }}
@@ -70,7 +70,7 @@ const IntroductionSection = () => (
       transition={{ duration: 0.3, delay: 0.1 }}
     >
       <img
-        src="/banner-2.png"
+        src="/banner-2.avif"
         alt="Colección de anteojos y lentes de Óptica Regina Elena en Córdoba - Estilos modernos y clásicos disponibles"
         className="w-full max-h-[500px] object-cover"
         loading="eager"

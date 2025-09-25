@@ -1,10 +1,10 @@
 import { Card, CardContent } from "@/components/ui/card";
 import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselNext,
-  CarouselPrevious,
+    Carousel,
+    CarouselContent,
+    CarouselItem,
+    CarouselNext,
+    CarouselPrevious,
 } from "@/components/ui/carousel";
 import { ExternalLink } from "lucide-react";
 
@@ -13,31 +13,31 @@ const googleReviews = [
     name: "Dario Ruarte",
     comment: "Atienden correctamente, los precios son los normales, y en general respetan los plazos de entrega. Un buen servicio aunque puede resultar dificultoso estacionar, ya que siempre hay vehículos en esa zona (por el Hospital)",
     url: "https://maps.app.goo.gl/hCJ4DsX5Q54EbZq16",
-    img: "/review_1.png",
+    img: "/review_1.avif",
   },
   {
     name: "Dania Maria Luz Ferreyra",
     comment: "La atención un 10! De todas, con mucha paciencia, es un poco más caro pero si usas mucho las pantallas tiene filtros que pocas ópticas tienen",
     url: "https://maps.app.goo.gl/4YbbKnMrDDsUEcFUA",
-    img: "/review_2.png",
+    img: "/review_2.avif",
   },
   {
     name: "Yolanda Medina",
     comment: "Buena atención. Buen trato. Cumplen con los plazos de entrega, te avisan por teléfono cuando esta listo. Muy buena calidad de sus productos y trabajo.",
     url: "https://maps.app.goo.gl/jV1NByHAQzHzWQQG6",
-    img: "/review_3.png",
+    img: "/review_3.avif",
   },
   {
     name: "Francisco Fermin",
     comment: "Excelente atención, fui por unos lentes recetados y me fueron entregados muy rápido dentro del tema entendido con lo de la pandemia. Gracias.",
     url: "https://maps.app.goo.gl/qW67tNTagFLHMJtt9",
-    img: "/review_4.png",
+    img: "/review_4.avif",
   },
   {
     name: "Alejandra Brandolin",
     comment: "Excelente atención!! Tienen hermosas monturas,  de ultima moda, muy buena  calidad y buenos precios.",
     url: "https://maps.app.goo.gl/strgg4zs1p9GMVbq8",
-    img: "/review_5.png",
+    img: "/review_5.avif",
   },
 ];
 

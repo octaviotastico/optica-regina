@@ -15,7 +15,7 @@ const FloatingWhatsApp: React.FC = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src="/wsp.png" alt="WhatsApp" className="size-6" />
+        <img src="/wsp.avif" alt="WhatsApp" className="size-6" />
       </a>
     </div>
   );

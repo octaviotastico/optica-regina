@@ -1,22 +1,22 @@
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
 import { handleScrollClick } from "@/utils/scroll";
 import { motion } from "framer-motion";
 import {
-  ChevronRight,
-  Facebook,
-  Heart,
-  Instagram,
-  Mail,
-  MapPin,
-  Phone,
+    ChevronRight,
+    Facebook,
+    Heart,
+    Instagram,
+    Mail,
+    MapPin,
+    Phone,
 } from "lucide-react";
 import React, { useState } from "react";
 
@@ -156,7 +156,7 @@ export default function FooterSection() {
                 rel="noopener noreferrer"
                 className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
-                <img src="/wsp.png" alt="WhatsApp" className="size-5" />
+                <img src="/wsp.avif" alt="WhatsApp" className="size-5" />
               </a>
             </div>
           </motion.div>

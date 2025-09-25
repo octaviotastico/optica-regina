@@ -106,9 +106,9 @@ const VisitUsSection = () => {
           </div>
 
           {/* Columna derecha: mapa */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-7 flex flex-col">
             <a
-              className="inline-flex items-center gap-2 text-sm sm:text-base text-black font-semibold mb-3 hover:underline"
+              className="inline-flex items-center gap-2 text-sm sm:text-base text-black font-semibold mb-4 hover:underline"
               href="https://maps.app.goo.gl/77pvfKjY66RAJ91H9"
               rel="noopener noreferrer"
               target="_blank"
@@ -118,7 +118,7 @@ const VisitUsSection = () => {
             </a>
 
             {/* Contenedor con aspect ratio para que no desborde en mobile */}
-            <div className="relative w-full rounded-2xl overflow-hidden shadow-lg bg-white aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]">
+            <div className="relative flex-1 w-full rounded-2xl overflow-hidden shadow-lg bg-white aspect-[4/3] sm:aspect-[16/10] lg:aspect-[16/9]">
               <iframe
                 title="Mapa de Óptica Regina Elena"
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d6810.327995415303!2d-64.16753622360633!3d-31.409607374264862!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9432a2a751027d5b%3A0xf535447dbfd24691!2s%C3%93ptica%20Regina%20Elena!5e0!3m2!1ses-419!2sit!4v1754662721116!5m2!1ses-419!2sit"

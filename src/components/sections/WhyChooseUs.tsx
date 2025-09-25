@@ -65,7 +65,7 @@ const WhyChooseUs = () => (
               className="flex items-center gap-3 flex-wrap h-auto whitespace-break-spaces text-center justify-center"
               style={{ whiteSpace: 'break-spaces' }}
             >
-              <img src="/wsp.png" alt="WhatsApp" className="w-6 h-6 brightness-0 invert" />
+              <img src="/wsp.avif" alt="WhatsApp" className="w-6 h-6 brightness-0 invert" />
               Recibir Asesoramiento Personalizado
             </a>
           </Button>
