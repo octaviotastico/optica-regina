@@ -16,10 +16,12 @@ Disallow: /dist/assets/
 Allow: /*.css
 Allow: /*.js
 Allow: /*.avif
-Allow: /*.avif
+Allow: /*.ico
 Allow: /*.jpeg
 Allow: /*.webp
 Allow: /*.svg
+Allow: /favicon.ico
+Allow: /site.webmanifest
 
 # Crawl-delay for aggressive bots
 User-agent: CCBot
