@@ -277,7 +277,7 @@ export default function FooterSection() {
               className="inline-flex items-center text-inherit no-underline"
             >
               <span
-                className="font-mono tracking-tight text-white"
+                className="font-mono tracking-tight text-[#202122]"
                 style={{ fontFamily: '"JetBrains Mono", monospace' }}
               >
                 bozziware<span style={{ color: "rgb(53, 212, 119)" }}>_</span>
