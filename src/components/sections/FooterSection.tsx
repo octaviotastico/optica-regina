@@ -1,13 +1,13 @@
-import React from "react";
 import { Button } from "@/components/ui/button";
 import {
-  Dialog,
-  DialogContent,
-  DialogDescription,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
+    Dialog,
+    DialogContent,
+    DialogDescription,
+    DialogFooter,
+    DialogHeader,
+    DialogTitle,
 } from "@/components/ui/dialog";
+import { handleScrollClick } from "@/utils/scroll";
 import { motion } from "framer-motion";
 import {
   ChevronRight,
@@ -17,18 +17,17 @@ import {
   MapPin,
   Phone,
 } from "lucide-react";
-import { useState } from "react";
-import { handleScrollClick } from "@/utils/scroll";
+import React, { useState } from "react";
 
 const Logo = () => (
-  <div className="flex items-center gap-3">
+  <div className="flex items-center gap-3 min-w-0">
     <img
       src="/logo.svg"
       alt="Óptica Regina Elena"
       className="h-8 w-auto hidden sm:block"
       onError={(e) => ((e.currentTarget.style.display = "none"))}
     />
-    <span className="text-xl font-extrabold tracking-tight">
+    <span className="text-lg sm:text-xl font-extrabold tracking-tight text-balance">
       Óptica <span className="text-brand">Regina Elena</span>
     </span>
   </div>
@@ -86,12 +85,12 @@ export default function FooterSection() {
         transition={{ duration: 0.35 }}
         className="bg-gradient-to-r from-red-400 to-[#dd3a45] text-white"
       >
-        <div className="max-w-7xl mx-auto px-6 py-10 flex flex-col md:flex-row items-center justify-between gap-6">
-          <h3 className="text-2xl md:text-3xl font-bold">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-8 sm:py-10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 md:gap-6">
+          <h3 className="text-xl sm:text-2xl md:text-3xl font-bold leading-tight text-balance">
             ¿Listo para ver mejor hoy?
           </h3>
 
-          <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center gap-3">
             <Button
               variant="outline"
               asChild
@@ -110,47 +109,53 @@ export default function FooterSection() {
         initial="hidden"
         whileInView="show"
         viewport={{ once: true, amount: 0.2 }}
-        className="max-w-7xl mx-auto px-6 py-14"
+        className="max-w-7xl mx-auto px-4 sm:px-6 py-12 sm:py-14"
       >
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-6 gap-10 lg:gap-20">
           {/* Brand + blurb */}
-          <motion.div variants={item} className="lg:col-span-2">
+          <motion.div variants={item} className="lg:col-span-2 min-w-0">
             <Logo />
-            <p className="text-gray-600 mt-4 max-w-md">
+            <p className="text-gray-600 mt-4 max-w-prose">
               Más de <strong>20 años</strong> cuidando tu salud visual en Córdoba,
               combinando atención profesional y tecnología 3D para que elijas
               con seguridad y estilo.
             </p>
 
             {/* Socials */}
-            <div className="flex items-center gap-3 mt-6">
+            <div className="flex items-center gap-2 sm:gap-3 mt-6">
               <a
                 href="https://www.instagram.com/opticareginaelena"
                 aria-label="Instagram"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <Instagram className="size-5" />
               </a>
               <a
                 href="https://www.facebook.com/OpticaReginaElena/"
                 aria-label="Facebook"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <Facebook className="size-5" />
               </a>
               <a
-                href="mailto:hola@opticareginaelena.com"
+                href="mailto:opticaregina@gmail.com"
                 aria-label="Email"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
                 <Mail className="size-5" />
               </a>
               <a
                 href="https://api.whatsapp.com/send?phone=5493513570864&text=Tenemos%20esos%20lentes%20que%20busc%C3%A1s!%20%F0%9F%98%8E%20%C2%BFen%20qu%C3%A9%20podemos%20ayudarte%3F"
                 aria-label="WhatsApp"
-                className="p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="p-3 sm:p-2 rounded-xl border border-gray-200 hover:border-brand hover:-translate-y-0.5 transition transform touch-manipulation"
               >
-                <img src="/wsp.png" alt="WhatsApp" className="size-5" />
+                <img src="/wsp.avif" alt="WhatsApp" className="size-5" />
               </a>
             </div>
           </motion.div>
@@ -165,10 +170,11 @@ export default function FooterSection() {
               <LinkItem onClick={(e) => onLink(e, "categories")}>Categorías</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "about-us")}>¿Quiénes Somos?</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "reviews")}>Testimonios</LinkItem>
-              <LinkItem onClick={(e) => onLink(e, "follow-us")}>Síguenos</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "follow-us")}>Redes Sociales</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "why-choose-us")}>¿Por qué Elegirnos?</LinkItem>
-              <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem>
+              <LinkItem onClick={(e) => onLink(e, "ecommerce")}>Tienda Online</LinkItem>
               <LinkItem onClick={(e) => onLink(e, "visit-us")}>Dónde Estamos</LinkItem>
+              {/* <LinkItem onClick={(e) => onLink(e, "try-in-3d")}>Probar en 3D</LinkItem> */}
             </ul>
           </motion.div>
 
@@ -178,7 +184,7 @@ export default function FooterSection() {
               Ayuda
             </h4>
             <ul className="mt-4 text-sm space-y-3">
-              <LinkItem onClick={() => setOpenVirtual(true)}>Prueba Virtual</LinkItem>
+              {/* <LinkItem onClick={() => setOpenVirtual(true)}>Prueba Virtual</LinkItem> */}
               <LinkItem onClick={() => setOpenDirections(true)}>Cómo Llegar</LinkItem>
             </ul>
           </motion.div>
@@ -194,18 +200,18 @@ export default function FooterSection() {
                 <span>Roma 535, Córdoba Capital</span>
               </li>
               <li className="flex items-start gap-3">
-                <Phone className="size-5 text-brand mt-0.5" />
+                <Phone className="size-5 text-brand mt-0.5 shrink-0" />
                 <a href="tel:+543513570864" className="hover:text-gray-900">
                   +54 351 357-0864
                 </a>
               </li>
-              <li className="flex items-start gap-3">
-                <Mail className="size-5 text-brand mt-0.5" />
+              <li className="flex items-start gap-3 min-w-0">
+                <Mail className="size-5 text-brand mt-0.5 shrink-0" />
                 <a
-                  href="mailto:hola@opticareginaelena.com"
-                  className="hover:text-gray-900"
+                  href="mailto:opticaregina@gmail.com"
+                  className="hover:text-gray-900 break-all"
                 >
-                  hola@opticareginaelena.com
+                  opticaregina@gmail.com
                 </a>
               </li>
             </ul>
@@ -213,15 +219,15 @@ export default function FooterSection() {
         </div>
 
         {/* Newsletter */}
-        <motion.div
+        {/* <motion.div
           variants={item}
-          className="mt-10 rounded-2xl border border-gray-200 p-5 sm:p-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
+          className="mt-10 rounded-2xl border border-gray-200 p-4 sm:p-5 md:p-6 flex flex-col md:flex-row gap-4 md:items-center md:justify-between"
         >
-          <div>
-            <p className="text-sm font-semibold tracking-wide text-gray-900 uppercase">
+          <div className="min-w-0">
+            <p className="text-xs sm:text-sm font-semibold tracking-wide text-gray-900 uppercase">
               Novedades
             </p>
-            <p className="text-gray-600">
+            <p className="text-gray-600 text-sm sm:text-base">
               Recibí promos y nuevos modelos (poquitos emails, lo prometemos).
             </p>
           </div>
@@ -240,20 +246,20 @@ export default function FooterSection() {
               alert("¡Gracias por suscribirte!");
               form.reset();
             }}
-            className="w-full md:w-auto flex flex-col sm:flex-row gap-3"
+            className="w-full md:w-auto flex flex-col sm:flex-row sm:items-stretch gap-3"
           >
             <input
               name="email"
               type="email"
               required
               placeholder="tu@email.com"
-              className="w-full sm:w-80 rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-4 focus:ring-brand/20"
+              className="w-full sm:flex-1 sm:min-w-0 md:w-80 rounded-xl border border-gray-300 px-4 py-3 outline-none focus:ring-4 focus:ring-brand/20"
             />
-            <Button type="submit" className="px-5 py-6 bg-brand hover:!bg-[#dd3a45]">
+            <Button type="submit" className="h-[48px] sm:h-[52px] px-5 bg-brand hover:!bg-[#dd3a45]">
               Suscribirme
             </Button>
           </form>
-        </motion.div>
+        </motion.div> */}
       </motion.div>
 
       {/* Bottom bar */}
@@ -277,7 +283,7 @@ export default function FooterSection() {
               </span>
             </a>
           </p>
-          <ul className="flex flex-wrap items-center gap-4">
+          <ul className="flex flex-wrap items-center gap-3 sm:gap-4">
             <li>
               <button
                 type="button"
@@ -322,8 +328,8 @@ export default function FooterSection() {
                 </ul>
                 <p>
                   Para iniciar un cambio o devolución, escribinos a{" "}
-                  <a href="mailto:hola@opticareginaelena.com" className="text-brand underline">
-                    hola@opticareginaelena.com
+                  <a href="mailto:opticaregina@gmail.com" className="text-brand underline">
+                    opticaregina@gmail.com
                   </a>{" "}
                   o por WhatsApp al{" "}
                   <a

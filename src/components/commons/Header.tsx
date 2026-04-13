@@ -1,7 +1,7 @@
-import { AnimatePresence, motion } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
 import { handleScrollClick } from "@/utils/scroll";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown, Menu, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 export const Header = () => {
   const [scrolled, setScrolled] = useState(false);
@@ -20,10 +20,11 @@ export const Header = () => {
     { href: "#categories", label: "Categorías", id: "categories" },
     { href: "#about-us", label: "Nosotros", id: "about-us" },
     { href: "#reviews", label: "Testimonios", id: "reviews" },
-    { href: "#follow-us", label: "Síguenos", id: "follow-us" },
+    { href: "#follow-us", label: "Redes Sociales", id: "follow-us" },
     { href: "#why-choose-us", label: "Por qué elegirnos", id: "why-choose-us" },
-    { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
-    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" }
+    { href: "#ecommerce", label: "Tienda Online", id: "ecommerce" },
+    { href: "#visit-us", label: "Dónde Estamos", id: "visit-us" },
+    // { href: "#try-in-3d", label: "Probar en 3D", id: "try-in-3d" },
   ];
 
   const visibleItems = allNavItems.slice(0, visibleCount);
@@ -145,6 +146,7 @@ export const Header = () => {
           ref={headerRef}
           initial={false}
           animate={scrolled ? "scrolled" : "top"}
+          role="banner"
           variants={{
             top: {
               width: "100%",
@@ -184,7 +186,7 @@ export const Header = () => {
           </a>
 
           {/* Dynamic Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-4 text-sm font-medium">
+          <nav className="hidden md:flex items-center gap-4 text-sm font-medium" role="navigation" aria-label="Navegación principal">
             <AnimatePresence mode="popLayout">
               {visibleItems.map((item) => (
                 <motion.a

@@ -1,15 +1,23 @@
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { Environment, OrbitControls, useGLTF } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
-import { ChevronRight, BadgeCheck } from "lucide-react";
+import { BadgeCheck, ChevronRight } from "lucide-react";
 import { Suspense } from "react";
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "../ui/separator";
 
 export function GlassesModel() {
   const { scene } = useGLTF("/models/glasses-custom.glb");
   return <primitive object={scene} scale={1.3} />;
+}
+// opcional: precarga del modelo
+useGLTF.preload?.("/models/glasses-custom.glb");
+
+function ViewerSkeleton() {
+  return (
+    <div className="w-full h-full rounded-2xl bg-gradient-to-br from-gray-100 via-gray-200 to-gray-300 animate-pulse" />
+  );
 }
 
 export const GlassesViewer = () => (
@@ -21,8 +29,20 @@ export const GlassesViewer = () => (
         <GlassesModel />
         <Environment preset="city" />
       </Suspense>
-      <OrbitControls enableZoom={true} />
+
+      {/* Controles limitados para evitar ángulos incómodos */}
+      <OrbitControls
+        enableZoom
+        enablePan={false}
+        minDistance={6}
+        maxDistance={18}
+        maxPolarAngle={Math.PI * 0.6}
+        minPolarAngle={Math.PI * 0.2}
+      />
     </Canvas>
+
+    {/* Fallback visual mientras carga el modelo (por si el Suspense tarda un frame) */}
+    <Suspense fallback={<ViewerSkeleton />}></Suspense>
   </div>
 );
 
@@ -44,41 +64,43 @@ const TryIn3DSection = () => (
             <h3 className="text-2xl font-semibold">Ray-Ban RB7046</h3>
           </div>
 
-          <Separator />
+            <Separator />
 
-          <p className="text-muted-foreground">
-            Estilo moderno con el sello de calidad de Ray-Ban. Un diseño
-            versátil para quienes buscan comodidad sin perder elegancia.
-          </p>
-          <ul className="space-y-3 flex-grow">
-            {[
-              "Material del marco: Acetato transparente",
-              "Varillas: Carey oscuro",
-              "Forma: Rectangular ligeramente redondeada",
-              "Ajuste cómodo con puente moldeado",
-              "Ideal para lentes recetados o con filtro de luz azul",
-            ].map((item) => (
-              <li key={item} className="flex items-start gap-3 text-gray-700">
-                <ChevronRight className="text-brand mt-1" />
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <div className="flex items-center gap-3 pt-2">
-            <BadgeCheck className="text-green-600" />
-            <span className="text-sm text-gray-500">
-              Garantía oficial de fábrica incluida
-            </span>
-          </div>
+            <p className="text-gray-600 text-sm sm:text-base leading-relaxed">
+              Estilo moderno con el sello de calidad de Ray-Ban. Un diseño versátil para quienes
+              buscan comodidad sin perder elegancia.
+            </p>
 
-          <Separator className="mt-6" />
+            <ul className="space-y-2.5 sm:space-y-3">
+              {[
+                "Material del marco: Acetato transparente",
+                "Varillas: Carey oscuro",
+                "Forma: Rectangular ligeramente redondeada",
+                "Ajuste cómodo con puente moldeado",
+                "Ideal para lentes recetados o con filtro de luz azul",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-2.5 text-gray-700">
+                  <ChevronRight className="text-brand mt-0.5 h-4 w-4 shrink-0" />
+                  <span className="text-sm sm:text-base leading-relaxed">{item}</span>
+                </li>
+              ))}
+            </ul>
 
-          <Button className="mt-2 w-full cursor-pointer bg-brand hover:!bg-[#dd3a45]">
-            Ver más detalles
-          </Button>
-        </CardContent>
-      </Card>
-    </div>
+            <div className="flex items-start gap-2 pt-1">
+              <BadgeCheck className="text-green-600 h-5 w-5 mt-0.5 shrink-0" />
+              <span className="text-xs sm:text-sm text-gray-500">
+                Garantía oficial de fábrica incluida
+              </span>
+            </div>
+
+            <Separator className="!mt-4 sm:!mt-6" />
+
+            <Button className="w-full bg-brand hover:!bg-[#dd3a45] text-sm sm:text-base py-5 sm:py-6 cursor-pointer">
+              Ver más detalles
+            </Button>
+          </CardContent>
+        </Card>
+      </div>
   </section>
 );
 
