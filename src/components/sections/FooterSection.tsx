@@ -12,7 +12,6 @@ import { motion } from "framer-motion";
 import {
   ChevronRight,
   Facebook,
-  Heart,
   Instagram,
   Mail,
   MapPin,
@@ -260,12 +259,23 @@ export default function FooterSection() {
       {/* Bottom bar */}
       <div className="border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-6 text-sm flex flex-col md:flex-row items-center justify-between gap-3 text-gray-500">
-          <p className="flex flex-wrap items-center gap-1">
-            <span>
-              © {new Date().getFullYear()} Óptica Regina Elena — Hecho con{" "}
-              <Heart className="size-4 text-brand -mt-0.5 inline-block" aria-label="corazón" />{" "}
-              en Córdoba
-            </span>
+          <p className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+            <span>© {new Date().getFullYear()} Óptica Regina Elena</span>
+            <a
+              href="https://bozziware.vercel.app/"
+              target="_blank"
+              rel="noreferrer"
+              aria-label="Made by bozziware_"
+              className="inline-flex items-center gap-1 rounded-full bg-gray-950 px-3 py-1 text-xs transition-colors hover:bg-gray-800"
+            >
+              <span className="text-gray-300">Made by</span>
+              <span
+                className="font-mono tracking-tight text-white"
+                style={{ fontFamily: '"JetBrains Mono", monospace' }}
+              >
+                bozziware<span style={{ color: "rgb(53, 212, 119)" }}>_</span>
+              </span>
+            </a>
           </p>
           <ul className="flex flex-wrap items-center gap-4">
             <li>
