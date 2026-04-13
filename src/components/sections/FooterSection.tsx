@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
 } from "@/components/ui/dialog";
 import { handleScrollClick } from "@/utils/scroll";
 import { motion } from "framer-motion";
@@ -55,12 +55,12 @@ const LinkItem = ({
 }) => (
   <li className="leading-normal">
     <Button variant="link" onClick={onClick} className="group inline-flex items-center gap-1 text-gray-600 hover:text-gray-900 transition-colors cursor-pointer p-0 !px-0 h-auto">
-    {/* <button type="button" onClick={onClick} className={baseLinkClasses}> */}
+      {/* <button type="button" onClick={onClick} className={baseLinkClasses}> */}
       <span className="bg-[length:0%_2px] bg-left-bottom bg-no-repeat group-hover:bg-[length:100%_2px] transition-[background-size] duration-300 bg-gradient-to-r from-brand/70 to-brand/70">
         {children}
       </span>
       <ChevronRight className="size-4 translate-x-0 opacity-0 group-hover:translate-x-0.5 group-hover:opacity-100 transition" />
-    {/* </button> */}
+      {/* </button> */}
     </Button>
   </li>
 );
@@ -265,16 +265,17 @@ export default function FooterSection() {
       {/* Bottom bar */}
       <div className="border-t border-gray-100">
         <div className="max-w-7xl mx-auto px-6 py-6 text-sm flex flex-col md:flex-row items-center justify-between gap-3 text-gray-500">
-          <p className="flex flex-wrap items-center justify-center md:justify-start gap-2">
+          <p className="flex flex-wrap items-center justify-center md:justify-start gap-1.5">
             <span>© {new Date().getFullYear()} Óptica Regina Elena</span>
+            <span aria-hidden="true">-</span>
+            <span>Made with ❤️ by</span>
             <a
               href="https://bozziware.vercel.app/"
               target="_blank"
               rel="noreferrer"
               aria-label="Made by bozziware_"
-              className="inline-flex items-center gap-1 rounded-full bg-gray-950 px-3 py-1 text-xs transition-colors hover:bg-gray-800"
+              className="inline-flex items-center text-inherit no-underline"
             >
-              <span className="text-gray-300">Made by</span>
               <span
                 className="font-mono tracking-tight text-white"
                 style={{ fontFamily: '"JetBrains Mono", monospace' }}
